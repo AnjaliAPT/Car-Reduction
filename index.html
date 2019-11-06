@@ -26,7 +26,7 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li class="nav-item nav-link"><a href="#loginmodal" data-toggle="modal">LogIn</a></li>
-      <li class="nav-item nav-link"><a href="#">SignUp</a></li>
+      <li class="nav-item nav-link"><a href="#signupmodal" data-toggle="modal">SignUp</a></li>
     </ul>
   </div>
 </nav>
@@ -35,7 +35,7 @@
         
           <!-- for login-->
           <div class="modal-content">
-            <div class="modal-header" style="padding:35px 50px;">
+            <div class="modal-header" style="padding:35px 50px">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
               <p style="font: size 8px">Login</p>
             </div>
@@ -59,6 +59,101 @@
           </div>
         </div>
 </div> 
+<!-- for Sign up -->
+<div class="modal" id="signupmodal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header" style="padding:25px 40px">
+             <button type="button" class="close" data-dismiss="modal">&times;</button>
+             <p>Sign Up</p>
+          </div>
+          <div class="modal-body" style="padding:40px 50px">
+                            <fieldset>
+                            <form class="form-horizontal" action="" method="post">
+                               <div class="form-group">
+                                  <label class="control-label col-md-2" for="name">FIRST NAME:</label>
+                                  <div class="col-md-10">
+                                  <input class="form-control" type="text" id="name" name="name" placeholder="YOUR FIRST NAME">
+                                  </div>
+                               </div>
+                               <div class="form-group">
+                                  <label class="col-md-2 control-label" for="name">LAST NAME:</label>
+                                  <div class="col-md-10">
+                                     <input class="form-control" type="text" id="lname" name="lname" placeholder="YOUR LAST NAME">
+                                  </div>
+                               </div>
+                               <div class="form-group">
+                                  <label class="control-label col-md-2" for="email">E-MAIL:</label>
+                                  <div class="col-md-10">
+                                     <input class="form-control" type="email" id="oemail" name="oemail" placeholder="Your email ID">
+                                  </div>
+                               </div>
+                               <div class="form-group">
+                                  <label class="control-label col-md-2" for="text">Mobile Number:</label>
+                                  <div class="col-md-10">
+                                     <input class="form-control" type="tel" name="number" id="number" placeholder="+91XXXXXXXXXX">
+                                  </div>
+                               </div>
+                               <div class="form-group">
+                                  <div class="row">
+                                    <label class="col-form-label col-md-2">Gender:</label>
+                                      <div class="form-check col-md-5">
+                                        <input class="form-check-input" type="radio" name="female" id="female" value="female">
+                                        <label class="form-check-label" for="female">
+                                          Female
+                                        </label>
+                                      </div>
+                                      <div class="form-check col-md-5">
+                                        <input class="form-check-input" type="radio" name="male" id="male" value="male">
+                                        <label class="form-check-label" for="male">
+                                          Male
+                                        </label>
+                                      </div>
+                                      </div>
+                               <div class="form-group">
+                                  <label class="control-label col-md-2" for="text">Password:</label>
+                                  <div class="col-md-10">
+                                     <input class="form-control" type="text" name="pwd" id="pwd" placeholder="*********">
+                                  </div>
+                               </div>
+                               <div class="custom-control custom-checkbox mr-sm-2">
+                                  <label class="custom-control-label">Do you have your own vehicle?</label>
+                                  <input type="checkbox" class="custom-control-input" id="carcheckbox">
+                               </div>
+                               <div class="cardisabled">
+                               <div class="form-group">
+                                  <label class="control-label col-md-2" for="text">Car model:</label>
+                                  <div class="col-md-10">
+                                     <input class="form-control" type="text" name="model" id="model" placeholder="Type your Car model/company" disabled>
+                                  </div>
+                               </div>
+                               <div class="form-group">
+                                  <label class="control-label col-md-2" for="text">Car registration number:</label>
+                                  <div class="col-md-10">
+                                     <input class="form-control" type="tel" name="regnumber" id="regnumber" placeholder="XXXXXXXXXX" disabled>
+                                  </div>
+                               </div>
+                              </div>
+                               <div class="form-group">
+                                  <div>
+                                     <button type="submit" class="btn btn-default btn-block">Sign Up</button>
+                                  </div>
+                               </div>
+                            </form>
+                          </fieldset>
+          </div>
+      </div>
+    </div>
+</div>
+<!-- <script>document.getElementById('carcheckbox').onchange = function() {
+    document.getElementById('cardisabled').disabled = !this.checked;
+};</script> -->
+<!-- <script>
+$('#carcheckbox').change(function() {
+    $('#cardisabled').attr('disabled',!this.checked)
+};
+</script> -->
+
     <footer>
 
     </footer>
