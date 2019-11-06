@@ -1,4 +1,4 @@
-.flex-container{
+/* .flex-container{
     display:flex;
     flex-direction:row-reverse;
     align-items:center;
@@ -17,4 +17,20 @@
     display:inline-block;
     text-align:center;
 
+} */
+.nav-link:hover{
+    background-color:rgba(204, 119, 204, 0.8);
+    text-decoration-color:black;
 }
+.modal-header, h4, .close {
+    background-color:rgba(204, 119, 204, 0.8);
+    color:white !important;
+    text-align: center;
+    font-size: 40px;
+  }
+  .modal-footer {
+    background-color: #f9f9f9;
+  }
+  .loginbtn{
+    background-color:rgba(119, 104, 104, 0.8);
+  }
