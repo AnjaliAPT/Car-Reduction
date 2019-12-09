@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Travis</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+  </script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-light navbar-expand-lg bg-light navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">KAR</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active nav-item nav-link"><a href="#">Home</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="nav-item nav-link"><a href="#loginmodal" data-toggle="modal">LogIn</a></li>
+        <li class="nav-item nav-link"><a href="#signupmodal" data-toggle="modal">SignUp</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <div class="modal" id="loginmodal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- for login-->
+      <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <p style="font: size 8px">Login</p>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+          <form role="form">
+            <div class="form-group">
+              <label for="username">Username/E-mail</label>
+              <input type="text" class="form-control" id="username" placeholder="Enter email or username">
+            </div>
+            <div class="form-group">
+              <label for="pswd"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+              <input type="text" class="form-control" id="pswd" placeholder="Enter password">
+            </div>
+            <button type="submit" class="btn loginbtn btn-block"><span class="glyphicon glyphicon-off"></span></button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+          <p>Not a member? <a href="#">Sign Up</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- for Sign up -->
+  <div class="modal fade" id="signupmodal" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center" style="padding:25px 40px">
+
+          <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+        </div>
+        <div class="modal-body mx-3" style="padding:40px 50px">
+          <fieldset>
+            <form class="form-horizontal" action="php/form_validation.php" method="post">
+              <div class="form-group">
+                <label class="control-label col-md-2" for="first_name">FIRST NAME:</label>
+                <div class="col-md-10">
+                  <input class="form-control" type="text" id="first_name" name="name" placeholder="YOUR FIRST NAME">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-2 control-label" for="last_name">LAST NAME:</label>
+                <div class="col-md-10">
+                  <input class="form-control" type="text" id="lname" name="last_name" placeholder="YOUR LAST NAME">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-md-2" for="email">E-MAIL:</label>
+                <div class="col-md-10">
+                  <input class="form-control" type="email" id="oemail" name="email" placeholder="Your email ID">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-md-2" for="mobile">Mobile Number:</label>
+                <div class="col-md-10">
+                  <input class="form-control" type="tel" name="mobile" id="number" placeholder="+91XXXXXXXXXX">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <label class="col-form-label col-md-2">Gender:</label>
+                  <div class="form-check col-md-5">
+                    <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+                    <label class="form-check-label" for="female">
+                      Female
+                    </label>
+                  </div>
+                  <div class="form-check col-md-5">
+                    <input class="form-check-input" type="radio" name="gender" id="male" value="male">
+                    <label class="form-check-label" for="male">
+                      Male
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-md-2" for="password">Password:</label>
+                  <div class="col-md-10">
+                    <input class="form-control" type="text" name="password" id="pwd" placeholder="*********">
+                  </div>
+                </div>
+                <div class="custom-control custom-checkbox mr-sm-2">
+                  <label class="custom-control-label">Do you have your own vehicle?</label>
+                  <input type="checkbox" class="custom-control-input" id="carcheckbox">
+                </div>
+
+
+                <div id="cardisabled">
+                  <div class="form-group">
+                    <label class="control-label col-md-2" for="car_type">Car model:</label>
+                    <div class="col-md-10">
+                      <input class="form-control" type="text" name="car_type" id="model" placeholder="Type your Car model/company">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-md-2" for="registration_no">Car registration number:</label>
+                    <div class="col-md-10">
+                      <input class="form-control" type="tel" name="registration_no" id="regnumber" placeholder="XXXXXXXXXX">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-md-2" for="car_no">Car number:</label>
+                    <div class="col-md-10">
+                      <input class="form-control" type="tel" name="car_no" id="regnumber" placeholder="XXXXXXXXXX">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div>
+                    <button type="submit" class="btn btn-default btn-block">Sign Up</button>
+                  </div>
+                </div>
+            </form>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+
+  </footer>
+
+  <script>
+    var x = document.getElementById("carcheckbox").checked;
+
+    if (x == true) {
+      document.getElementById('cardisabled').style.display = 'block';
+    }
+  </script>
+
+</body>
+
+</html>
