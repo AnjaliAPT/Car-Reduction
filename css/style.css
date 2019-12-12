@@ -2,7 +2,6 @@
   box-sizing: border-box;
 }
 
-
 html,
 body {
   margin: 0;
@@ -14,6 +13,7 @@ body {
   width: 100%;
   --nav-Color: transparent;
   --main-Color: linear-gradient(to right, #5e92db, #39b2a7);
+  /* background-color: pink; */
 }
 
 .hd-v-header {
@@ -103,19 +103,18 @@ nav {
   height: 5rem;
 }
 
-.logos {}
-
-.logos img {
+#logo {
   width: 10rem;
   height: 8rem;
   z-index: 10;
 }
 
 #logo-img {
-  width: 1rem;
-  height: 1rem;
+  width: 5rem;
+  height: 6rem;
   left: 0;
   z-index: 10;
+  margin: -2rem;
 }
 
 #logo:hover {
@@ -193,8 +192,8 @@ nav {
   color: #ffffff !important;
   border-color: #ffffff;
   margin: 0rem 0.4rem;
-  width: 5rem;
-
+  width: 6.5rem;
+  text-align: center;
 }
 
 .btns a:hover {
@@ -324,6 +323,23 @@ nav {
   margin-bottom: -15%;
   color: #495057;
 }
+
+
+.custom-control.custom-checkbox {
+  padding-left: 0;
+}
+
+label.custom-control-label {
+  position: relative;
+  padding-right: 1.5rem;
+}
+
+label.custom-control-label::before,
+label.custom-control-label::after {
+  right: 0;
+  left: auto;
+}
+
 
 .section {
   padding: 20px 0;
