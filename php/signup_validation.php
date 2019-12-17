@@ -11,7 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header('Cache-Control: no cache'); //no cache
     session_cache_limiter('private_no_expire'); // works
     //session_cache_limiter('public'); // works too
-    session_start();
     include('connect.php');
     $f_name = mysqli_real_escape_string($db, $_POST["name"]);
     $l_name = mysqli_real_escape_string($db, $_POST["last_name"]);
@@ -47,9 +46,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //     $headers = 'From:noreply@yourwebsite.com' . "\r\n"; 
     //     mail($to, $subject, $message, $headers); 
 
-    if (isset($_POST["car_binary"]))
+    if (isset($_POST["car_binary"])) {
         $car_bin = 1;
-    else
+        $reg = mysqli_real_escape_string($db, $_POST["registration_no"]);
+        $type = mysqli_real_escape_string($db, $_POST["car_type"]);
+        $no = mysqli_real_escape_string($db, $_POST["car_no"]);
+        $query = "SELECT * FROM cars;";
+        $result = mysqli_query($db, $query);
+        $count = mysqli_num_rows($result);
+        $count = $count + 1;
+        $query = "INSERT INTO `cars`(`car_id`, `registration_no`, `car_type`,`car_no`,  `username`) VALUES ($count,'$reg','$type','$no','$user');";
+        echo ($query);
+        mysqli_query($db, $query);
+    } else
         $car_bin = 0;
     $query = "SELECT * FROM user;";
     $result = mysqli_query($db, $query);
@@ -57,6 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $count = $count + 1;
     $query = "INSERT INTO `user`(`id`, `first_name`, `last_name`,`email`, `mobile`, `gender`, `password`, `car_binary`, `email_binary`, `username`, `hash`) VALUES ($count,'$f_name','$l_name','$e', '$mob', '$gend','$pswd',$car_bin,0,'$user','$hsh');";
     mysqli_query($db, $query);
+
     // ob_end_clean();
     // die();
 }
