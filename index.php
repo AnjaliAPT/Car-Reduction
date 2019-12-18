@@ -1,3 +1,5 @@
+<?php include('PHP/contact-form.php') ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,6 +22,7 @@
 
   <!-- Material Google icon theme -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
   <!-- CSS Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
@@ -165,6 +168,8 @@
 
   <!-- End of Form -->
 
+  <!-- Section a starts -->
+
 
   <section class="section section-a text-center">
     <div class="section-a-heading">
@@ -234,71 +239,186 @@
 
     </div>
   </section>
-  <section class="jumbotron section-b">
-    <h1 class="section-b-heading">Journey made available on<span><img src="Resources/images/img.png" alt="ferry" id="section-b-logo"></span> </h1>
-    <div class="row section-b-content">
 
-      <div class="column col-md-4 col-sm-10 column-b-content">
+  <!-- Section a ends -->
+
+  <!-- Section b starts -->
+
+  <section class="section section-b text-center">
+    <div class="section-b-heading">
+      <h1>Journey made available on<span id="a2"> <img src="Resources/images/img.png" alt="ferry"></span></h1>
+    </div>
+
+    <div class="row section-b-content align-center justify-content-center text-center">
+
+      <div class="column col-lg-3 col-xs-10 column-b-content">
         <div class="row section-b-img">
-          <img src="Resources/images/network.png" alt="Expand Network">
+          <i class="fa fa-users"></i>
         </div>
         <div class="row section-b-txt">
-          <h2 class="section-b-h2">
-            Expand Network
+          <h2 class="row section-b-h2">
+            In Control<br />
           </h2>
-          <p class="section-b-p">
-            Get to know more professionals to expand your business network.
+          <p class="row section-b-p">Verified member profiles and ratings mean you know exactly who you're travelling with.
           </p>
         </div>
       </div>
 
-      <div class="column col-md-4 col-sm-10 column-b-content">
+
+      <div class="column col-lg-3 col-xs-10 column-b-content">
         <div class="row section-b-img">
-          <img src="Resources/images/network.png" alt="Expand Network">
+          <i class="fa fa-hand-peace-o"></i>
         </div>
         <div class="row section-b-txt">
-          <h2 class="section-b-h2">
-            Expand Network
+          <h2 class="row section-b-h2">
+            Carpool with confidence<br />
           </h2>
-          <p class="section-b-p">
-            Get to know more professionals to expand your business network.
+          <p class="row section-b-p">
+            ID and home address verification adds another level of security to member profiles.
           </p>
         </div>
       </div>
 
-      <div class="column col-md-4 col-sm-10 column-b-content">
+
+      <div class="column col-lg-3 col-xs-10 column-b-content">
         <div class="row section-b-img">
-          <img src="Resources/images/network.png" alt="Expand Network">
+          <i class="fa fa-key"></i>
         </div>
         <div class="row section-b-txt">
-          <h2 class="section-b-h2">
-            Expand Network
+          <h2 class="row section-b-h2">
+            Your booking is protected<br />
           </h2>
-          <p class="section-b-p">
-            Get to know more professionals to expand your business network.
+          <p class="row section-b-p">
+            We offer 100% full refund for cancelation either by driver, or passenger.
           </p>
         </div>
       </div>
 
     </div>
   </section>
-  <section class="section section-c">
-    <div class="container">
-      <h2>Section B</h2>
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde, impedit amet minima iste autem cumque et
-        maiores blanditiis doloribus aut dolorum quaerat non est voluptatum, tempore ut dolorem voluptas quod quae
-        accusantium, ex inventore ducimus. Beatae mollitia exercitationem, quam similique, consectetur ratione
-        reprehenderit delectus neque eligendi facere soluta dolor ducimus!</p>
-    </div>
 
+  <!-- Section b ends -->
+
+
+  <!-- Contact Section -->
+
+
+  <section class="jumbotron" id="no-margin">
+    <div class="container contact-container">
+
+      <div class="contact-header">
+        <h3>Contact</h3>
+        <p>Fill out the form for any query</p>
+      </div>
+
+      <div class="row row-contact-info">
+
+        <div class="col-md-4">
+          <div class="contact-email">
+            <img src="Resources/images/email.svg" class="icon-contact" alt="E-MAIL">
+            <h3>E-MAIL</h3>
+            <p><a href="mailto:akcount121@gmail.com">akcount121@gmail.com</a></p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="contact-phone">
+            <img src="Resources/images/phone.svg" class="icon-contact" alt="PHONE">
+            <h3>MOBILE</h3>
+            <p><a href="tel:+91 9009546537">+91 9009546537</a></p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="contact-linkedin">
+            <img src="Resources/images/linkedin.png" class=" icon-contact" id="a4" alt="LINKEDIN">
+            <h3>LINKEDIN</h3>
+            <p><a href="linkedin.com/in/akash-sharma-1a5433178/">Akash Sharma</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <div id="sendmessage">
+          <?= $sendmessage ?></div>
+        <form action="PHP/contact-form.php" method="post">
+          <div class="form-row">
+            <div class="form-group col-lg-6">
+              <input class="form-control" type="text" placeholder="Name" name="name" class="form-control" required>
+              <span class="error"><?= $name_error ?></span>
+            </div>
+            <div class=" form-group col-lg-6">
+              <input class="form-control" type="text" placeholder="Company" name="company" class="form-control" required>
+              <span class="error"><?= $company_error ?></span>
+            </div>
+            <div class="form-group col-lg-6">
+              <input class="form-control" type="text" placeholder="Email" name="email" class="form-control" required>
+              <span class="error"><?= $email_error ?></span>
+            </div>
+            <div class="form-group col-lg-6">
+              <input class="form-control" type="text" placeholder="Subject" name="subject" class="form-control" required>
+              <span class="error"><?= $subject_error ?></span>
+            </div>
+            <div class="form-group col-lg-12">
+              <textarea class="form-control" type="text" rows="5" data-rule="required" data-msg="Enter your message" placeholder="" name="message" class="form-control" required></textarea>
+              <span class="error"><?= $text_error ?></span>
+            </div>
+          </div>
+          <div>
+            <div class="text-center"><button type="submit" title="Submit" id="contact-button">Send Message</button></div>
+          </div>
+        </form>
+      </div>
+    </div>
   </section>
+
+  <!-- Contact Section ends -->
+
+
+  <!-- Footer Start -->
+
+  <footer>
+    <div class="container-fluid">
+      <div class="row text-center">
+
+        <div class="column col-md-3 col-sm-10">
+          <img src="Resources/images/Group 4.png" alt="logo" class="fir">
+          <img src="Resources/images/img.png" alt="ferry" class="sec">
+        </div>
+
+        <div class="column col-md-5 col-sm-10">
+          <div class="copyright">
+            &copy; <script>
+              document.write(new Date().getFullYear());
+            </script> Copyright ferry. All Rights Reserved.
+          </div>
+          <div class="credits">
+            Designed and Developed by <strong id="a6">Marcos Akash</strong></a>
+          </div>
+        </div>
+
+        <div class="column col-md-4 col-sm-10" id="google_translate_element"></div>
+
+      </div>
+  </footer>
+
+  <!-- Footer ends -->
 
 
   <!-- Javascript -->
+  <script src="JS/jquery.js"></script>
   <script src="JS/car_binary.js">
   </script>
   <script src="JS/form_validation.js"></script>
-  <script src="JS/observer.js"></script>
+  <script src="observer.js"></script>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   <!-- End of Javascript -->
 </body>
 
