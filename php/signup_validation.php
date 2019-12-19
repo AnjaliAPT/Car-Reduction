@@ -2,8 +2,8 @@
 ob_start();
 // print_r($_POST);
 
-foreach ($_POST as $key => $value)
-    echo $key . '=' . $value . '<br />';
+// foreach ($_POST as $key => $value)
+//     echo $key . '=' . $value . '<br />';
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $count = mysqli_num_rows($result);
         $count = $count + 1;
         $query = "INSERT INTO `cars`(`car_id`, `registration_no`, `car_type`,`car_no`,  `username`) VALUES ($count,'$reg','$type','$no','$user');";
-        echo ($query);
+        // echo ($query);
         mysqli_query($db, $query);
     } else
         $car_bin = 0;
@@ -64,13 +64,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = mysqli_query($db, $query);
     $count = mysqli_num_rows($result);
     $count = $count + 1;
-    $query = "INSERT INTO `user`(`id`, `first_name`, `last_name`,`email`, `mobile`, `gender`, `password`, `car_binary`, `email_binary`, `username`, `hash`) VALUES ($count,'$f_name','$l_name','$e', '$mob', '$gend','$pswd',$car_bin,0,'$user','$hsh');";
+    $query = "INSERT INTO `user`(`id`, `first_name`, `last_name`,`email`, `mobile`, `gender`, `password`, `car_binary`, `email_binary`, `username`, `hash`) VALUES ($count,'$f_name','$l_name','$e', '$mob', '$gend','$pswd',$car_bin,1,'$user','$hsh');";
     mysqli_query($db, $query);
+    echo "<script>";
+    echo "alert('An email has been sent to you. Confirm your email to login');";
+    echo "window.location = '../index.php';"; // redirect with javascript, after page loads
+    echo "</script>";
 
     // ob_end_clean();
     // die();
 }
-session_destroy();
+// session_destroy();
 
 function test_input($data)
 {

@@ -1,5 +1,6 @@
-<?php include('PHP/contact-form.php') ?>
-
+<?php
+include('PHP/contact-form.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,6 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Ferry | Sharing your journeys</title>
+
+  <link rel="icon" type="image/png" href="Resources/images/Group4.png">
+
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
@@ -64,9 +68,9 @@
         <div class="container register">
           <div class="row">
             <div class="col-md-3 register-left">
-              <img src="Resources/images/img.png" alt="ferry" />
+              <img src="Resources/images/img.png" id="b1" alt="ferry" />
               <h3>Welcome</h3>
-              <p>You are 30 seconds away from earning your own money!</p>
+              <p>You are moments away from creating your account</p>
               <input type="submit" name="" value="Login" /><br />
             </div>
             <div class="col-md-9 register-right">
@@ -118,11 +122,11 @@
                         <div class="form-group">
                           <div class="maxl">
                             <span style="color:#8E959B">Gender : &nbsp;</span>
-                            <label class="radio inline">
+                            <label class="radio-inline">
                               <input type="radio" name="gender" value="male" checked>
                               <span> Male </span>
                             </label>
-                            <label class="radio inline">
+                            <label class="radio-inline">
                               <input type="radio" name="gender" value="female">
                               <span>Female </span>
                             </label>
@@ -338,33 +342,31 @@
         </div>
       </div>
       <div class="contact-form">
-        <div id="sendmessage">
-          <?= $sendmessage ?></div>
-        <form action="PHP/contact-form.php" method="post">
+        <form method="post" action="">
           <div class="form-row">
             <div class="form-group col-lg-6">
-              <input class="form-control" type="text" placeholder="Name" name="name" class="form-control" required>
+              <input class="form-control" type="text" placeholder="Name" name="name" value="<?= htmlentities($nme) ?>" class="form-control">
               <span class="error"><?= $name_error ?></span>
             </div>
             <div class=" form-group col-lg-6">
-              <input class="form-control" type="text" placeholder="Company" name="company" class="form-control" required>
+              <input class="form-control" type="text" placeholder="Company" name="company" value="<?= htmlentities($cmp) ?>" class=" form-control">
               <span class="error"><?= $company_error ?></span>
             </div>
             <div class="form-group col-lg-6">
-              <input class="form-control" type="text" placeholder="Email" name="email" class="form-control" required>
+              <input class="form-control" type="text" placeholder="Email" name="email" value="<?= htmlentities($eml) ?>" class=" form-control">
               <span class="error"><?= $email_error ?></span>
             </div>
             <div class="form-group col-lg-6">
-              <input class="form-control" type="text" placeholder="Subject" name="subject" class="form-control" required>
+              <input class="form-control" type="text" placeholder="Subject" name="subject" value="<?= htmlentities($sbj) ?>" class=" form-control">
               <span class="error"><?= $subject_error ?></span>
             </div>
             <div class="form-group col-lg-12">
-              <textarea class="form-control" type="text" rows="5" data-rule="required" data-msg="Enter your message" placeholder="" name="message" class="form-control" required></textarea>
+              <textarea class="form-control" type="text" rows="5" data-msg="Enter your message" placeholder="" name="message" class="form-control"><?= htmlentities($msg) ?></textarea>
               <span class="error"><?= $text_error ?></span>
             </div>
           </div>
           <div>
-            <div class="text-center"><button type="submit" title="Submit" id="contact-button">Send Message</button></div>
+            <div class="text-center"><button type="submit" name="contact-form-submit" title="Submit" id="contact-button">Send Message</button></div>
           </div>
         </form>
       </div>
@@ -380,12 +382,12 @@
     <div class="container-fluid">
       <div class="row text-center">
 
-        <div class="column col-md-3 col-sm-10">
+        <div class="column col-md-4 col-sm-10">
           <img src="Resources/images/Group 4.png" alt="logo" class="fir">
           <img src="Resources/images/img.png" alt="ferry" class="sec">
         </div>
 
-        <div class="column col-md-5 col-sm-10">
+        <div class="column col-md-4 col-sm-10">
           <div class="copyright">
             &copy; <script>
               document.write(new Date().getFullYear());
