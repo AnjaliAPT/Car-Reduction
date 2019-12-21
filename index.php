@@ -36,6 +36,7 @@ include('PHP/contact-form.php');
 <body>
 
   <!-- Header Section begins-->
+
   <header class="hd-v-header hd-container">
     <div class="hd-fullscreen-video-wrap">
       <video src="Resources/videos/Winter_Traffic.mp4" muted autoplay="true" loop="true" class="hd-center">
@@ -60,6 +61,7 @@ include('PHP/contact-form.php');
           <a class="hd-btn" href="#loginmodal">Find out more</a>
     </div>
   </header>
+
   <!-- Header Section ends -->
 
   <div class="modal fade" id="signupmodal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -246,6 +248,50 @@ include('PHP/contact-form.php');
 
   <!-- Section a ends -->
 
+
+  <div class="banner container-fluid text-center">
+    <h1>How does it works</h1>
+  </div>
+
+  <!-- Section c starts -->
+
+  <section class="section section-c container-fluid">
+
+    <div class="row">
+
+
+
+
+      <div class="video-part column col-lg-7 col-md-10">
+
+        <div class="video-capture">
+          <video poster="Resources/images/restore.jpg" muted loop autoplay>
+            <source src="Resources/videos/vision.mp4" type="video/mp4">
+          </video>
+          <div class="shadow"></div>
+        </div>
+      </div>
+
+
+
+      <div class="textpart column col-lg-5 col-md-10">
+        <p class="line anim-typewriter"></p>
+      </div>
+
+
+
+
+
+
+    </div>
+
+
+  </section>
+
+
+
+  <!-- Section c ends -->
+
   <!-- Section b starts -->
 
   <section class="section section-b text-center">
@@ -302,6 +348,7 @@ include('PHP/contact-form.php');
   </section>
 
   <!-- Section b ends -->
+
 
 
   <!-- Contact Section -->

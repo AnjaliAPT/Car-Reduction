@@ -1,0 +1,250 @@
+   body {
+       margin: 0;
+       padding: 0;
+   }
+
+   #map {
+       position: absolute;
+       top: 0;
+       bottom: 0;
+       width: 100%;
+   }
+
+   .mapbox-directions-profile {
+       display: none;
+   }
+
+   .directions-control-instructions {
+       display: none;
+   }
+
+   .mapboxgl-ctrl.mapboxgl-ctrl-attrib {
+       display: none;
+   }
+
+   a.mapboxgl-ctrl-logo {
+       display: none;
+   }
+
+   .mapbox-directions-origin input[type='text']:focus {
+       background-color: rgb(236, 230, 230);
+   }
+
+   .mapbox-directions-destination input[type='text']:focus {
+       background-color: rgb(236, 230, 230);
+   }
+
+
+   ::-webkit-input-placeholder {
+       /* Chrome/Opera/Safari */
+       font-size: 12px;
+   }
+
+   ::-moz-placeholder {
+       /* Firefox 19+ */
+       font-size: 12px;
+   }
+
+   :-ms-input-placeholder {
+       /* IE 10+ */
+       font-size: 12px;
+   }
+
+   :-moz-placeholder {
+       /* Firefox 18- */
+       font-size: 12px;
+   }
+
+
+   .dtp {
+       z-index: 2;
+       /* background-color: red; */
+       width: 30rem;
+       /* height: 30rem; */
+       height: 40px;
+       position: absolute;
+       top: 5.8rem;
+       left: 0.65rem;
+   }
+
+   .gj-picker-bootstrap [role=header] {
+       background: linear-gradient(to right, #5e92db, #39b2a7);
+       color: #fff;
+   }
+
+   .gj-picker-bootstrap .selected {
+       color: #fff;
+   }
+
+   .btn {
+       color: #5e92db;
+       background-color: rgba(204, 200, 200, 0.85);
+   }
+
+
+   .gj-picker-bootstrap .arrow-end {
+       border: 16px solid #5e92db;
+   }
+
+   .gj-picker-bootstrap .arrow-begin {
+       background-color: #5e92db;
+   }
+
+   .input-group>.input-group-append>.btn {
+       background-color: #333;
+       opacity: 0.9;
+   }
+
+   .gj-picker-bootstrap.datetimepicker [role=header] {
+       width: 18rem;
+   }
+
+   table {
+       width: 18rem;
+   }
+
+   @import "compass/css3";
+
+   @include keyframes(bounce) {
+
+       0%,
+       20%,
+       50%,
+       80%,
+       100% {
+           @include transform(translateY(0));
+       }
+
+       40% {
+           @include transform(translateY(-30px));
+       }
+
+       60% {
+           @include transform(translateY(-15px));
+       }
+   }
+
+
+
+   @-moz-keyframes bounce {
+
+       0%,
+       20%,
+       50%,
+       80%,
+       100% {
+           -moz-transform: translateY(0);
+           transform: translateY(0);
+       }
+
+       40% {
+           -moz-transform: translateY(-30px);
+           transform: translateY(-30px);
+       }
+
+       60% {
+           -moz-transform: translateY(-15px);
+           transform: translateY(-15px);
+       }
+   }
+
+   @-webkit-keyframes bounce {
+
+       0%,
+       20%,
+       50%,
+       80%,
+       100% {
+           -webkit-transform: translateY(0);
+           transform: translateY(0);
+       }
+
+       40% {
+           -webkit-transform: translateY(-30px);
+           transform: translateY(-30px);
+       }
+
+       60% {
+           -webkit-transform: translateY(-15px);
+           transform: translateY(-15px);
+       }
+   }
+
+   @keyframes bounce {
+
+       0%,
+       20%,
+       50%,
+       80%,
+       100% {
+           -moz-transform: translateX(0);
+           -ms-transform: translateX(0);
+           -webkit-transform: translateX(0);
+           transform: translateX(0);
+       }
+
+       40% {
+           -moz-transform: translateX(-30px);
+           -ms-transform: translateX(-30px);
+           -webkit-transform: translateX(-30px);
+           transform: translateX(-30px);
+       }
+
+       60% {
+           -moz-transform: translateX(-15px);
+           -ms-transform: translateX(-15px);
+           -webkit-transform: translateX(-15px);
+           transform: translateX(-15px);
+       }
+   }
+
+
+   .arrow i {
+       display: block;
+       z-index: 25;
+       position: absolute;
+       /* background-color: red; */
+       /* background: linear-gradient(to right, #5e92db, #39b2a7); */
+      
+       /* color: #444;
+        */
+        color: #4CAF50;
+       /* background-color: #39b2a7; */
+   }
+
+   .arrow {
+       position: absolute;
+       bottom: 3%;
+       right: 2%;
+       margin-left: -20px;
+       width: 40px;
+       height: 60px;
+       z-index: 20;
+
+       /* background-color: rebeccapurple;   */
+       /*change with size of arrow to make sit on bottom */
+       /*   background-image: url(); */
+       /*   background-size: contain; */
+   }
+
+   .bounce {
+       -moz-animation: bounce 2s infinite;
+       -webkit-animation: bounce 2s infinite;
+       animation: bounce 2s infinite;
+   }
+
+.arrow i:hover{
+cursor: pointer;
+ /* color: rgba(63, 226, 63, 0.75); */
+ color: #444;
+}
+
+
+   @media screen and (max-width:750px) {
+
+       .arrow {
+           zoom: 60%;
+           bottom: 10%;
+           right: 5%;
+       }
+   }

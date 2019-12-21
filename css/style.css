@@ -410,6 +410,8 @@ label.custom-control-label::after {
   width: 100%;
   zoom: 0.88;
   opacity: 0.88;
+  /* background-color: transparent; */
+  /* display: none; */
 }
 
 .header-h1 {
@@ -545,13 +547,14 @@ label.custom-control-label::after {
 .section-b {
   /* background-color: gray; */
   color: #fff;
-  margin: 20px 20px !important;
+  margin: 200px 20px !important;
   min-height: 100vh;
-  margin-bottom: 200px !important;
+  /* margin-bottom: 200px !important; */
   background: linear-gradient(to right, rgba(94, 146, 219, 0.7), rgba(57, 178, 167, 0.7)), url('../Resources/images/mobile-car.jpeg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+
 }
 
 .section-b-heading {
@@ -831,6 +834,198 @@ footer .container-fluid .row .column {
   width: 10rem !important;
 }
 
+
+
+
+.banner {
+  /* margin: 0px 20px !important; */
+  background: linear-gradient(to right, rgb(94, 146, 219), rgb(57, 178, 167)) !important;
+  height: 5.8rem !important;
+  background-color: transparent;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #075BA8 !important;
+  align-items: center;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 5.5rem;
+
+}
+
+.banner h1 {
+  font-weight: bold;
+  font-size: 2.4rem;
+}
+
+
+.section-c {
+  /* background-color: purple !important; */
+  min-height: 80vh;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  /* height: 80vh; */
+  text-transform: uppercase;
+  margin-bottom: 150px !important;
+}
+
+
+.section-c .row {
+  justify-content: center;
+  align-items: center;
+  /* background-color: pink; */
+  display: flex;
+  width: 90%;
+  height: 90%;
+}
+
+.videopart {
+  /* background-color: red; */
+  /* filter: drop-shadow(40px 50px 30px #000); */
+  /* box-shadow: 0px 0px 36px 36px rgba(0, 0, 0, 0.75); */
+  justify-content: center;
+  align-items: center;
+  /* background-color: pink; */
+  display: flex;
+}
+
+.textpart {
+  /* background-color: #333; */
+}
+
+.video-capture {
+  /* background-color: yellow; */
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: 700px;
+  height: 500px;
+  padding: 0;
+}
+
+.video-capture video {
+  width: 700px;
+  height: 500px;
+  display: flex;
+  /* background-color: pink; */
+
+}
+
+body>section.section.section-c.container-fluid>div>div.video-part.column.col-lg-7.col-md-10 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shadow {
+  position: absolute;
+  width: 600px;
+  height: 7px;
+  /* box-shadow: 0px 1000000000px 0px 0px rgba(0, 0, 0, 0.75); */
+  /* background-color: rgba(0,0,0,0.75); */
+  bottom: 0;
+  left: 80px;
+}
+
+.textpart p {
+  /* background-color: yellow; */
+  background: -webkit-linear-gradient(#1177BB, #085DA9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+
+
+.anim-typewriter {
+  animation: typewriter 6s steps(40) 3s infinite alternate both,
+    blinkTextCursor 500ms steps(40) infinite normal;
+  text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.5);
+  /* background: linear-gradient(#1177BB, #085DA9); */
+  /* color: #fff; */
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.line {
+  position: relative;
+  top: 50%;
+  width: 12em;
+  margin: 0 auto;
+  border-right: 2px solid rgba(255, 255, 255, 0.75);
+  /* font-size: 180%; */
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  transform: translateY(-50%);
+  padding: 5px 0px;
+}
+
+
+.textpart p::before {
+  content: 'Simple to use';
+  animation: effect infinite 10s;
+}
+
+
+
+@keyframes typewriter {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 12em;
+  }
+}
+
+@keyframes blinkTextCursor {
+  from {
+    border-right-color: #1177BB,
+
+  }
+
+  to {
+    border-right-color: #085DA9;
+  }
+}
+
+
+@keyframes effect {
+  0% {
+    content: 'Simple to use';
+  }
+
+  16% {
+    content: 'SignUp';
+  }
+
+  32% {
+    content: 'Verify your Email';
+  }
+
+  48% {
+    content: 'Login to your account';
+  }
+
+  64% {
+    content: 'Grab a ride';
+  }
+
+  80% {
+    content: 'Share a pool';
+  }
+}
+
+
+
+
+
+
+
+
 @media screen and (max-width: 1200px) {
   .hd-header-content {
     zoom: 0.95;
@@ -855,10 +1050,31 @@ footer .container-fluid .row .column {
 
   }
 
+  .anim-typewriter {
+    font-size: 2rem;
+  }
+
   #a2 img {
     width: 14rem;
     height: 10rem;
     margin: 0px -30px;
+  }
+
+  .video-capture {
+    width: 600px;
+    height: 400px;
+  }
+
+  .video-capture video {
+    width: 600px;
+    height: 400px;
+  }
+
+  .shadow {
+    width: 510px;
+    height: 15px;
+    bottom: 0;
+    left: 40px;
   }
 
 }
@@ -926,6 +1142,28 @@ footer .container-fluid .row .column {
     padding: 7px 100px;
     width: 90%;
   }
+
+  .textpart {
+    margin-top: 5rem !important;
+  }
+
+
+  .video-capture {
+    width: 500;
+    height: 300px;
+  }
+
+  .video-capture video {
+    width: 500px;
+    height: 300px;
+  }
+
+  .shadow {
+    width: 320px;
+    height: 20px;
+    bottom: 0;
+    left: 160px;
+  }
 }
 
 @media screen and (max-width: 850px) {
@@ -950,36 +1188,71 @@ footer .container-fluid .row .column {
   .row-contact-info p a {
     font-size: 1.2rem;
   }
+}
 
-  /* footer .container-fluid {
+/* footer .container-fluid {
       padding: 2rem 4rem 1rem 1rem;
     } 
    } */
 
-  @media screen and (max-width: 680px) {
-    .hd-header-content {
-      zoom: 0.65;
-    }
-
-    .section-b-heading h1 {
-      font-size: 1.8rem;
-      font-weight: 600;
-    }
-
-    #a2 img {
-      width: 12rem;
-      height: 8rem;
-      margin: 0px -30px;
-    }
-
-    .fa {
-      font-size: 3rem;
-    }
-
+@media screen and (max-width: 680px) {
+  .hd-header-content {
+    zoom: 0.65;
   }
 
-  @media screen and (max-width: 582px) {
-    .hd-header-content {
-      zoom: 0.55;
-    }
+  .section-b-heading h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
   }
+
+  #a2 img {
+    width: 12rem;
+    height: 8rem;
+    margin: 0px -30px;
+  }
+
+  .fa {
+    font-size: 3rem;
+  }
+
+  .banner {
+    height: 5rem;
+  }
+
+  .banner h1 {
+    font-size: 2rem;
+  }
+
+
+}
+
+@media screen and (max-width: 582px) {
+  .hd-header-content {
+    zoom: 0.55;
+  }
+
+  .video-capture {
+    width: 500px;
+    height: 300px;
+  }
+
+  .video-capture video {
+    width: 500px;
+    height: 300px;
+  }
+
+  .shadow {
+    width: 250px;
+    height: 15px;
+    bottom: 0;
+    left: 60px;
+  }
+
+  .banner {
+    height: 2rem;
+  }
+
+  .banner h1 {
+    font-size: 1.5rem;
+  }
+}

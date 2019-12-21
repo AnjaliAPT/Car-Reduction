@@ -37,7 +37,7 @@ include('PHP/contact-form.php');
 
     <!-- Header Section begins-->
     <header>
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top my-nav">
             <button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -72,17 +72,60 @@ include('PHP/contact-form.php');
     <!-- Header Section ends -->
 
 
- 
+    <!-- Start of main section -->
 
-<main>
-
-
+    <main>
 
 
+        <!-- Section a begins -->
 
-</main>
+        <section class="jumbotron container section-a">
+
+            <div class="row">
+
+
+                <div class="column col-md-6">
+                    <button>
+                        <a href="share.php">Share</a>
+                    </button>
+                </div>
+
+
+                <div class="column col-md-6">
+                    <button>
+                        <a href="grab.php">Grab</a>
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Section a ends -->
+
+        <!-- Section b starts -->
+
+        <section class="jumbotron">
+            <h1>Current transactions</h1>
+        </section>
+
+        <!-- Section b ends -->
+
+        <!-- Section c begins -->
+
+        <section class="jumbotron">
+            <h1>Previous transaction</h1>
+        </section>
+
+        <!-- Section 3cends -->
+
+    </main>
+
+    <!-- End of main section -->
+
 
     <!-- Contact Section -->
+
     <section class="jumbotron" id="no-margin">
         <div class="container contact-container">
 
