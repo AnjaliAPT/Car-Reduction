@@ -171,7 +171,7 @@
                 dat.date = array[1];
 
 
-                console.log(dat);
+                // console.log(dat);
 
                 $.ajax({
                     url: 'php/share_mail.php',
@@ -182,11 +182,13 @@
                         dtp_input.value = "";
                         from.value = "";
                         to.value = "";
+                        window.location.href = "main.php";
+                    },
+                    error: function(res) {
+                        // console.log(res);
+                        window.location.href = "error.php";
                     }
                 })
-            }
-            if (yes == 0) {
-                window.location.href = "main.php";
             }
         }
     </script>

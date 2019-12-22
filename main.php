@@ -156,7 +156,7 @@ include('PHP/contact-form.php');
                     <div class="contact-linkedin">
                         <img src="Resources/images/linkedin.png" class=" icon-contact" id="a4" alt="LINKEDIN">
                         <h3>LINKEDIN</h3>
-                        <p><a href="linkedin.com/in/akash-sharma-1a5433178/">Akash Sharma</a></p>
+                        <p><a href="https://www.linkedin.com/in/akash-sharma-1a5433178/" target="_blank">Akash Sharma</a></p>
                     </div>
                 </div>
             </div>

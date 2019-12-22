@@ -301,7 +301,7 @@ include('PHP/contact-form.php');
 
     <div class="row section-b-content align-center justify-content-center text-center">
 
-      <div class="column col-lg-3 col-xs-10 column-b-content">
+      <div class="column col-lg-3 col-xs-12 column-b-content">
         <div class="row section-b-img">
           <i class="fa fa-users"></i>
         </div>
@@ -315,7 +315,7 @@ include('PHP/contact-form.php');
       </div>
 
 
-      <div class="column col-lg-3 col-xs-10 column-b-content">
+      <div class="column col-lg-3 col-xs-12 column-b-content">
         <div class="row section-b-img">
           <i class="fa fa-hand-peace-o"></i>
         </div>
@@ -330,7 +330,7 @@ include('PHP/contact-form.php');
       </div>
 
 
-      <div class="column col-lg-3 col-xs-10 column-b-content">
+      <div class="column col-lg-3 col-xs-12 column-b-content">
         <div class="row section-b-img">
           <i class="fa fa-key"></i>
         </div>
@@ -384,7 +384,7 @@ include('PHP/contact-form.php');
           <div class="contact-linkedin">
             <img src="Resources/images/linkedin.png" class=" icon-contact" id="a4" alt="LINKEDIN">
             <h3>LINKEDIN</h3>
-            <p><a href="linkedin.com/in/akash-sharma-1a5433178/">Akash Sharma</a></p>
+            <p><a href="https://www.linkedin.com/in/akash-sharma-1a5433178/" target="_blank">Akash Sharma</a></p>
           </div>
         </div>
       </div>
