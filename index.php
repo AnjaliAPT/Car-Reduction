@@ -46,23 +46,25 @@ include('PHP/contact-form.php');
     <nav class="row justify-content-between align-items-center navbar-expand-md">
 
       </div>
-      <div class="logos col-lg-3 col-md-4">
+      <div class="logos col-lg-3 col-md-4 anim_rws">
         <a href="index.php"><img src="Resources/images/Group 4.png" id="logo-img"></a>
         <a href="index.php"><img src="Resources/images/img.png" alt="ferry" id="logo"></a>
       </div>
-      <div class="btns col-md-4" id="main-navbar">
+      <div class="btns col-md-4 anim_req" id="main-navbar">
         <a href="#loginmodal" data-toggle="modal" id="login-btn" class="btn btn-outline-primary">Login</a>
         <a href="#signupmodal" data-toggle="modal" id="signup-btn" class="btn btn-outline-primary">SignUp</a>
       </div>
     </nav>
     <div class="hd-header-content text-center">
-      <h1 class="header-h1">Carpool. Connect. Conserve.</h1>
-      <p class="header-p">Sharing your journey<p>
-          <a class="hd-btn" href="#loginmodal">Find out more</a>
+      <h1 class="header-h1 anim">Carpool. Connect. Conserve.</h1>
+      <p class="header-p anim-1">Sharing your journey<p>
+          <p class="anim-b3"><a class="hd-btn" href="#loginmodal">Find out more</a></p>
     </div>
   </header>
 
   <!-- Header Section ends -->
+
+  <!-- Signup box -->
 
   <div class="modal fade" id="signupmodal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -73,13 +75,13 @@ include('PHP/contact-form.php');
               <img src="Resources/images/img.png" id="b1" alt="ferry" />
               <h3>Welcome</h3>
               <p>You are moments away from creating your account</p>
-              <input type="submit" name="" value="Login" /><br />
+              <input type="submit" id="inner-submit-button" onclick="" value="LOGIN" /><br />
             </div>
             <div class="col-md-9 register-right">
 
               <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                  <h3 class="register-heading">SignUp</h3>
+                  <h3 class="register-heading">SIGNUP</h3>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
 
 
@@ -95,6 +97,7 @@ include('PHP/contact-form.php');
                           <div class="valid-feedback"></div>
                           <div class="invalid-feedback">Please fill out this field.</div>
                         </div>
+
                         <div class="form-group input-group">
                           <div class="input-group-prepend">
                             <span class="input-group-text"><i class="material-icons">&#xe7ff;</i></span>
@@ -158,7 +161,7 @@ include('PHP/contact-form.php');
                         <div class="invalid-feedback"> Please fill out this field.</div>
                       </div>
                       <div class="col-md-6">
-                        <input type="submit" class="btnRegister" value="Register" />
+                        <input type="submit" class="btnRegister" value="REGISTER" />
                       </div>
 
                     </div>
@@ -172,6 +175,85 @@ include('PHP/contact-form.php');
     </div>
   </div>
 
+
+  <!-- Signup box end -->
+
+  <!-- Login box begins -->
+  <div class="modal fade" id="loginmodal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="container register">
+          <div class="row">
+            <div class="col-md-3 register-left">
+              <img src="Resources/images/img.png" id="b1" alt="ferry" />
+              <h3>Welcome</h3>
+              <p>New to ferry</p>
+              <input type="submit" name="" value="SIGNUP" /><br />
+            </div>
+            <div class="col-md-9 register-right">
+
+              <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                  <h3 class="register-heading">LOGIN</h3>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+
+                  <form action="PHP/login_validation.php" method="POST" class="ajaxform">
+
+                    <div class="row register-form">
+                      <div class="col-md-12">
+
+
+                        <div class="form-group input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="material-icons">&#xe7ff;</i></span>
+                          </div>
+                          <input type="text" class="form-control" placeholder="Username" id="login_user" value="" name="login_user" />
+                          <div class="valid-feedback"></div>
+                          <div class="invalid-feedback">Please fill out this field.</div>
+                        </div>
+
+                        <div class="form-group input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="material-icons">&#xe7ff;</i></span>
+                          </div>
+                          <input type="password" class="form-control" placeholder="Password" id="login_pswd" value="" name="login_pswd" />
+                          <div class="valid-feedback"></div>
+                          <div class="invalid-feedback">Please fill out this field.</div>
+                        </div>
+
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="rememberme" name="remberme">
+                          <label class="custom-control-label" for="rememberme"></label>&nbsp;&nbsp;Remember Me</label>
+                        </div>
+
+
+                        <div id="login_error" class="error"></div>
+
+                        <div class="col-md-6">
+                          <input type="submit" class="btnRegister" value="LOGIN" />
+                        </div>
+
+                      </div>
+                    </div>
+                </div>
+
+
+
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+
+  <!-- Login box ends -->
+
   <!-- End of Form -->
 
   <!-- Section a starts -->
@@ -179,18 +261,18 @@ include('PHP/contact-form.php');
 
   <section class="section section-a text-center">
     <div class="section-a-heading">
-      <h4>CARPOOLING BENIFITS</h4>
-      <h2>Why <span id="a1">Carpool?</span></h2>
-      <hr />
+      <h4 class="anim_first">CARPOOLING BENIFITS</h4>
+      <h2 class="anim_second">Why <span id="a1">Carpool?</span></h2>
+      <hr class="anim_third" />
     </div>
 
     <div class="row section-a-content align-center justify-content-center text-center">
 
       <div class="column col-lg-3 col-md-6 col-sm-10 column-a-content">
         <div class="row section-a-img">
-          <img src="Resources/images/congestion.png" alt="Reduce Congestion">
+          <img src="Resources/images/congestion.png" class="anim_bottom" alt="Reduce Congestion">
         </div>
-        <div class="row section-a-txt">
+        <div class="row section-a-txt anim_left">
           <h2 class="section-a-h2"> Reduce Congestion
           </h2>
           <p class="section-a-p"> Help reduce the number of cars on the roads. Transform the cities we live in.
@@ -201,9 +283,9 @@ include('PHP/contact-form.php');
 
       <div class="column col-lg-3 col-md-6 col-sm-10 column-a-content">
         <div class="row section-a-img">
-          <img src="Resources/images/friends.png" alt="Make friends">
+          <img src="Resources/images/friends.png" class="anim_bottom" alt="Make friends">
         </div>
-        <div class="row section-a-txt">
+        <div class="row section-a-txt anim_left">
           <h2 class="section-a-h2">
             Make Friends
           </h2>
@@ -216,9 +298,9 @@ include('PHP/contact-form.php');
 
       <div class="column col-lg-3 col-md-6 col-sm-10 column-a-content">
         <div class="row section-a-img">
-          <img src="Resources/images/wallet.png" alt="Split Costs">
+          <img src="Resources/images/wallet.png" class="anim_bottom" alt="Split Costs">
         </div>
-        <div class="row section-a-txt">
+        <div class="row section-a-txt anim_right">
           <h2 class="section-a-h2">
             Split Costs
           </h2>
@@ -231,9 +313,9 @@ include('PHP/contact-form.php');
 
       <div class="column col-lg-3 col-md-6 col-sm-10 column-a-content">
         <div class="row section-a-img">
-          <img src="Resources/images/network.png" alt="Expand Network">
+          <img src="Resources/images/network.png" class="anim_bottom" alt="Expand Network">
         </div>
-        <div class="row section-a-txt">
+        <div class="row section-a-txt anim_right">
           <h2 class="section-a-h2">
             Expand Network
           </h2>
@@ -296,49 +378,49 @@ include('PHP/contact-form.php');
 
   <section class="section section-b text-center">
     <div class="section-b-heading">
-      <h1>Journey made available on<span id="a2"> <img src="Resources/images/img.png" alt="ferry"></span></h1>
+      <h1 class="anim_blink_left">Journey made available on<span id="a2" class="a2"> <img src="Resources/images/img.png" alt="ferry"></span></h1>
     </div>
 
     <div class="row section-b-content align-center justify-content-center text-center">
 
-      <div class="column col-lg-3 col-xs-12 column-b-content">
+      <div class="column col-lg-3 col-xs-12 column-b-content anim_blink_bottom">
         <div class="row section-b-img">
-          <i class="fa fa-users"></i>
+          <i class="fa fa-users  anim_blink_res"></i>
         </div>
         <div class="row section-b-txt">
-          <h2 class="row section-b-h2">
+          <h2 class="row section-b-h2  anim_blink_res">
             In Control<br />
           </h2>
-          <p class="row section-b-p">Verified member profiles and ratings mean you know exactly who you're travelling with.
+          <p class="row section-b-p anim_blink_res">Verified member profiles and ratings mean you know exactly who you're travelling with.
           </p>
         </div>
       </div>
 
 
-      <div class="column col-lg-3 col-xs-12 column-b-content">
+      <div class="column col-lg-3 col-xs-12 column-b-content anim_blink_bottom">
         <div class="row section-b-img">
-          <i class="fa fa-hand-peace-o"></i>
+          <i class="fa fa-hand-peace-o anim_blink_res"></i>
         </div>
         <div class="row section-b-txt">
-          <h2 class="row section-b-h2">
+          <h2 class="row section-b-h2 anim_blink_res">
             Carpool with confidence<br />
           </h2>
-          <p class="row section-b-p">
+          <p class="row section-b-p anim_blink_res">
             ID and home address verification adds another level of security to member profiles.
           </p>
         </div>
       </div>
 
 
-      <div class="column col-lg-3 col-xs-12 column-b-content">
+      <div class="column col-lg-3 col-xs-12 column-b-content anim_blink_bottom">
         <div class="row section-b-img">
-          <i class="fa fa-key"></i>
+          <i class="fa fa-key anim_blink_res"></i>
         </div>
         <div class="row section-b-txt">
-          <h2 class="row section-b-h2">
+          <h2 class="row section-b-h2 anim_blink_res">
             Your booking is protected<br />
           </h2>
-          <p class="row section-b-p">
+          <p class="row section-b-p anim_blink_res">
             We offer 100% full refund for cancelation either by driver, or passenger.
           </p>
         </div>
@@ -445,7 +527,7 @@ include('PHP/contact-form.php');
           </div>
         </div>
 
-        <div class="column col-md-4 col-sm-10" id="google_translate_element"></div>
+        <div class="column col-md-4 col-sm-10 align-center justify-center" id="google_translate_element"></div>
 
       </div>
   </footer>
@@ -454,7 +536,48 @@ include('PHP/contact-form.php');
 
 
   <!-- Javascript -->
+
+  <script src="https://unpkg.com/scrollreveal@3.3.2/dist/scrollreveal.min.js"></script>
+
+  <script src="JS/app.js">
+  </script>
+
+
+
   <script src="JS/jquery.js"></script>
+
+
+
+
+
+  <script>
+    $(document).ready(function() {
+      $(".ajaxform").submit(function(event) {
+        event.preventDefault();
+        document.querySelector("#login_error").innerHTML = "";
+        console.log("Stopped");
+        var data = {};
+        data.login_user = $("#login_user").val();
+        data.login_pswd = $("#login_pswd").val();
+
+        $.ajax({
+          url: 'php/login_validation.php',
+          method: "post",
+          data: data,
+          success: function(res) {
+            console.log(res);
+            if (res == 1) {
+              console.log('directing');
+              window.location.href = "main.php";
+            } else {
+              document.querySelector("#login_error").innerHTML = res;
+            }
+          }
+        });
+      });
+    });
+  </script>
+
   <script src="JS/car_binary.js">
   </script>
   <script src="JS/form_validation.js"></script>
@@ -467,7 +590,9 @@ include('PHP/contact-form.php');
       }, 'google_translate_element');
     }
   </script>
+
   <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
   <!-- End of Javascript -->
 </body>
 

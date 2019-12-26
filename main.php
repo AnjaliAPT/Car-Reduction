@@ -1,6 +1,22 @@
 <?php
+
+
 include('PHP/contact-form.php');
+
+// $x = date("m/d/Y");
+// echo $x;
+// $s = explode("/", $x);
+// echo $s[2];
+
+
+
 ?>
+
+<script>
+
+
+</script>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,35 +53,39 @@ include('PHP/contact-form.php');
 
     <!-- Header Section begins-->
     <header>
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top my-nav">
-            <button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand"><img src="Resources/images/Group 4.png" alt="Brand-logo" id="logo-img"></a>
-            <span class="navbar-text"><img src="Resources/images/img.png" alt="ferry" id="logo"></span>
-            <div class="collapse navbar-collapse" id="collapse_target">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" data-target="dropdown_target">Link
-                            <span class="caret"></span></a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown_target">
-                            <a class="dropdown-item" href="#">PHP</a>
-                            <a class="dropdown-item" href="#">PHP</a>
-                            <a class="dropdown-item" href="#">PHP</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">PHP</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                </ul>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container">
+                <a href="index.php" class="navbar-brand"><img src="Resources/images/Group 4.png" id="logo-img"></a>
+                <a href="index.php" class="navbar-brand"><img src="Resources/images/img.png" alt="ferry" id="logo"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <div id="nav-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contact</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
     </header>
@@ -105,16 +125,26 @@ include('PHP/contact-form.php');
 
         <!-- Section b starts -->
 
-        <section class="jumbotron">
-            <h1>Current transactions</h1>
+        <section class="section-a container-fluid">
+
+
+            <div class="active-transactions container-fluid my-container">
+
+            </div>
         </section>
 
         <!-- Section b ends -->
-
+        <hr />
         <!-- Section c begins -->
 
-        <section class="jumbotron">
-            <h1>Previous transaction</h1>
+        <section class="section-b container-fluid">
+
+            <div class="past-transactions container-fluid my-container">
+
+
+            </div>
+
+
         </section>
 
         <!-- Section 3cends -->
@@ -228,8 +258,116 @@ include('PHP/contact-form.php');
 
 
     <!-- Javascript -->
-    <script src="JS/jquery.js"></script>
+
+
+
+
+    <script src="JS/jquery.js">
+    </script>
+
     <script src="JS/form_validation.js"></script>
+
+    <script>
+        function loadlink() {
+            $('.active-transactions').load('php/active.php', function() {
+                $(this).unwrap();
+            });
+
+
+            $('.past-transactions').load('php/past.php', function() {
+                $(this).unwrap();
+            });
+        }
+
+        loadlink();
+        setInterval(function() {
+            loadlink()
+        }, 60000);
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#nav-icon").click(function() {
+                $(this).toggleClass('open');
+            });
+        });
+    </script>
+
+    <!-- <script src="https://unpkg.com/scrollreveal@3.3.2/dist/scrollreveal.min.js">
+    </script>
+    <script>
+        window.sr = new ScrollReveal({
+            reset: true
+        });
+        sr.reveal('.my-row', {
+            duration: 1500,
+            origin: 'left',
+            delay: 300,
+            distance: '400px',
+            easing: 'ease'
+        });
+        if ($('.my-row').length > 0) {
+            sr.init();
+        }
+    </script> -->
+
+
+
+    <!-- 
+    <script>
+        function debounce(func, wait = 20, immediate = true) {
+            var timeout;
+
+            return function executedFunction() {
+                var context = this;
+                var args = arguments;
+
+                var later = function() {
+                    timeout = null;
+                    if (!immediate) func.apply(context, args);
+                };
+
+                var callNow = immediate && !timeout;
+
+                clearTimeout(timeout);
+
+                timeout = setTimeout(later, wait);
+
+                if (callNow) func.apply(context, args);
+            };
+        };
+
+        // console.log(slider);
+        // setInterval(function() {
+        //     console.log($('.my-row').length);
+        // }, 1000);
+
+
+        function checkSlide(e) {
+            // console.log($('.my-row').length);
+            // console.log('none');
+            const slider = document.querySelectorAll('.my-row');
+            // console.log(slider.length);
+            slider.forEach(slide => {
+                // console.log('none');
+                const slideInAt = (window.scrollY + window.innerHeight) - slide.clientHeight / 2;
+                // console.log(slideInAt);
+                const slideBottom = slide.offsetTop + slide.clientHeight;
+                // console.log(slideBottom);
+                const isHalfShown = slideInAt > slide.offsetTop;
+                // console.log(isHalfShown);
+                const xs = window.scrollY < slideBottom;
+                // console.log(xs);
+                if (isHalfShown && xs) {
+
+                    slide.classList.add('slide-active');
+                    // console.log('here');
+                }
+
+            });
+        }
+        window.addEventListener('scroll', debounce(checkSlide));;
+    </script> -->
+
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({

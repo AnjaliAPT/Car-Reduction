@@ -33,7 +33,8 @@
     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 
-
+    <!-- <script scr="JS/html2canvas.js" type="text/javascript"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js" integrity="sha256-my/qJggBjG+JoaR9MUSkYM+EpxVkxZRNn3KODs+el74=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/share.css">
 
 </head>
@@ -67,7 +68,9 @@
             container: 'map', // container id
             style: 'mapbox://styles/mapbox/streets-v11',
             center: [76.693, 22.953], // starting position
-            zoom: 6 // starting zoom
+            zoom: 6, // starting zoom,
+            preserveDrawingBuffer: true
+            // preserveDrawingBuffer: true
         });
         // Add geolocate control to the map.
         map.addControl(
@@ -88,12 +91,12 @@
         );
     </script>
 
-    <script>
+    <!-- <script>
         $(window).scroll(function() {
             $(".arrow").css("opacity", 1 - $(window).scrollTop() / 250);
             //250 is fade pixels
         });
-    </script>
+    </script> -->
 
     <script>
         const go = document.querySelector('#go');
@@ -101,6 +104,15 @@
 
         go.onclick = function() {
             // console.log('Clicked');
+
+            // html2canvas($(".map"), {
+            //     dpi: 192,
+            //     onrendered: function(canvas) {
+            //         var base64URL = canvas.toDataURL("image/png");
+
+
+
+
 
             var yes = 0;
 
@@ -119,7 +131,7 @@
             if (one.display === 'none') {
                 from.style.border = "1px solid red";
                 yes = 1;
-                console.log("orign");
+                // console.log("orign");
             } else {
                 from.style.border = "0";
             }
@@ -130,7 +142,7 @@
             if (one.display === 'none') {
                 to.style.border = "1px solid red";
                 yes = 1;
-                console.log("des");
+                // console.log("des");
             } else {
                 to.style.border = "0";
             }
@@ -148,7 +160,7 @@
 
                 dtp_input.style.border = "1px solid red";
                 yes = 1;
-                console.log("time");
+                // console.log("time");
             }
 
 
@@ -159,16 +171,22 @@
 
                 dtp_input.style.border = "1px solid red";
                 yes = 1;
-                console.log("date");
+                // console.log("date");
             }
 
             if (yes === 0) {
+
+
+                var base64URL = map.getCanvas().toDataURL();
+
                 var dat = {};
 
                 dat.from = from.value;
                 dat.to = to.value;
                 dat.time = array[0];
                 dat.date = array[1];
+                dat.image = base64URL;
+
 
 
                 // console.log(dat);

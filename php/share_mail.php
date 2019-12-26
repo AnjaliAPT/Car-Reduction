@@ -18,6 +18,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $date = mysqli_real_escape_string($db, $_POST["date"]);
     $time = mysqli_real_escape_string($db, $_POST["time"]);;
 
+    $image = $_POST['image'];
+
+    $location = "../Resources/local/";
+
+    $image_parts = explode(";base64,", $image);
+
+    $image_base64 = base64_decode($image_parts[1]);
+
+    $filename = "screenshot_" . uniqid() . '.png';
+
+    $file = $location . $filename;
+
+    file_put_contents($file, $image_base64);
+
+    $location = "Resources/local/";
+
+    $file = $location . $filename;
 
     //     $to      = $email; 
     //     $subject = 'Signup | Verification'; 
@@ -43,8 +60,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = mysqli_query($db, $query);
     $count = mysqli_num_rows($result);
     $count = $count + 1;
-    $query = "INSERT INTO `share`(`share_id`, `username`, `source`,`destination`,  `date`, `time`, `acceptor_username`) VALUES ($count,'test','$source','$destination','$date','$time', 'acceptor');";
-    echo ($query);
+    $query = "INSERT INTO `share`(`share_id`, `username`, `source`,`destination`,  `date`, `time`, `acceptor_username`,`active`,`image_dir`) VALUES ($count,'test','$source','$destination','$date','$time', 'acceptor',1,'$file');";
+    // echo ($query);
     mysqli_query($db, $query);
 
 

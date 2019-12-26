@@ -19,6 +19,8 @@ body {
   /* background-color: pink; */
 }
 
+
+
 a {
   text-decoration: none;
 }
@@ -68,13 +70,11 @@ a {
   left: 0;
   width: 100vw;
   z-index: 10;
-  background: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    from(#5e92db),
-    to(#39b2a7)
-  );
+  background: -webkit-gradient(linear,
+      left top,
+      right top,
+      from(#5e92db),
+      to(#39b2a7));
   background: -o-linear-gradient(left, #5e92db, #39b2a7);
   background: linear-gradient(to right, #5e92db, #39b2a7);
   opacity: 0.85;
@@ -258,13 +258,11 @@ nav {
 }
 
 .register {
-  background: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    from(#5e92db),
-    to(#39b2a7)
-  );
+  background: -webkit-gradient(linear,
+      left top,
+      right top,
+      from(#5e92db),
+      to(#39b2a7));
   background: -o-linear-gradient(left, #5e92db, #39b2a7);
   background: linear-gradient(to right, #5e92db, #39b2a7);
   margin-top: 3%;
@@ -388,6 +386,11 @@ nav {
   border-bottom-left-radius: 1.5rem;
 }
 
+#contact-button:focus {
+  border: none !important;
+  outline: none !important;
+}
+
 .register-heading {
   text-align: center;
   margin-top: 8%;
@@ -414,9 +417,13 @@ label.custom-control-label::after {
   /* background-color: #000; */
   background-color: rgb(49, 95, 138);
   /* background-color: rgb(23, 67, 105); */
-  width: 100%;
-  zoom: 0.88;
+  transform: scaleY(0.88);
   opacity: 0.88;
+  width: 105vw;
+  transform-origin: top;
+  /* top: 0; */
+  /* left: 0; */
+  /* position: fixed; */
   /* background-color: transparent; */
   /* display: none; */
 }
@@ -548,11 +555,9 @@ label.custom-control-label::after {
   margin: 200px 20px;
   min-height: 100vh;
   /* margin-bottom: 200px !important; */
-  background: linear-gradient(
-      to right,
+  background: linear-gradient(to right,
       rgba(94, 146, 219, 0.7),
-      rgba(57, 178, 167, 0.7)
-    ),
+      rgba(57, 178, 167, 0.7)),
     url("../Resources/images/mobile-car.jpeg");
   background-position: center;
   background-size: cover;
@@ -753,6 +758,11 @@ footer {
   /* height: 20vh; */
 }
 
+.btn-outline-primary:focus {
+  box-shadow: none;
+}
+
+
 footer .container-fluid {
   /* background-color: yellowgreen; */
   height: 100%;
@@ -826,17 +836,15 @@ footer .container-fluid .row .column {
 }
 
 #google_translate_element {
-  padding: 3rem;
+  padding: 3rem 0rem;
   width: 10rem !important;
 }
 
 .banner {
   /* margin: 0px 20px !important; */
-  background: linear-gradient(
-    to right,
-    rgb(94, 146, 219),
-    rgb(57, 178, 167)
-  ) !important;
+  background: linear-gradient(to right,
+      rgb(94, 146, 219),
+      rgb(57, 178, 167)) !important;
   height: 5.8rem !important;
   background-color: transparent;
   text-transform: uppercase;
@@ -906,10 +914,7 @@ footer .container-fluid .row .column {
   /* background-color: pink; */
 }
 
-body
-  > section.section.section-c.container-fluid
-  > div
-  > div.video-part.column.col-lg-7.col-md-10 {
+body>section.section.section-c.container-fluid>div>div.video-part.column.col-lg-7.col-md-10 {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1108,6 +1113,7 @@ body
     height: 30%;
     width: 100vw !important;
   }
+
   .section-b-img {
     width: 100vw !important;
   }
@@ -1201,6 +1207,7 @@ body
   .banner h1 {
     font-size: 2rem;
   }
+
   .section-b {
     margin: 200px 0px !important;
   }
@@ -1243,8 +1250,7 @@ body
   }
 }
 
-@media screen and (max-width: 430px)
-{
+@media screen and (max-width: 430px) {
   .video-capture {
     width: 400px;
     height: 250px;
