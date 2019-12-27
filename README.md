@@ -24,7 +24,7 @@
     ·
     <a href="https://github.com/AKASHCS50/Car-Reduction/issues">Report Bug</a>
     ·
-    <a href="https://github.com/othneildrew/AKASHCS50/Car-Reduction/issues">Request Feature</a>
+    <a href="https://github.com/AKASHCS50/Car-Reduction/issues">Request Feature</a>
   </p>
 </p>
 
