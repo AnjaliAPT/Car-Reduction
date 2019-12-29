@@ -3,6 +3,10 @@
 
 include('PHP/contact-form.php');
 
+session_start();
+$_SESSION['user'] = "abcdefghi";
+$user = $_SESSION['user'];
+
 // $x = date("m/d/Y");
 // echo $x;
 // $s = explode("/", $x);
@@ -69,20 +73,22 @@ include('PHP/contact-form.php');
 
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Home
-                                <span class="sr-only">(current)</span>
+                    <ul class="navbar-nav ml-auto align-items-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Offer a ride &nbsp;<i class="fa fa-superpowers" aria-hidden="true"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Grab a ride &nbsp;<i class="fa fa-search" aria-hidden="true"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="logout-a" href="">
+                                <div class="logout-img">
+                                    <i class="material-icons">&#xe851;</i>
+                                    &nbsp;&nbsp;<?= $user ?>
+                                </div>
+                                <div class="logout">LOGOUT</div>
                             </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Services</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -99,22 +105,18 @@ include('PHP/contact-form.php');
 
         <!-- Section a begins -->
 
-        <section class="jumbotron container section-a">
+        <section class="jumbotron container-fluid section-a">
 
             <div class="row">
 
 
-                <div class="column col-md-6">
-                    <button>
-                        <a href="share.php">Share</a>
-                    </button>
+                <div class="column col-md-6 share-column">
+                    <img src="Resources/images/aa (1).png" alt="grab" class="share-image">
                 </div>
 
 
-                <div class="column col-md-6">
-                    <button>
-                        <a href="grab.php">Grab</a>
-                    </button>
+                <div class="column col-md-6 grab-column">
+                    <img src="Resources/images/aa (2).png" alt="grab" class="grab-image">
                 </div>
 
             </div>
@@ -124,7 +126,10 @@ include('PHP/contact-form.php');
         <!-- Section a ends -->
 
         <!-- Section b starts -->
-
+        <div class="heading-transactions">
+            <h2>ACTIVE RIDES</h2>
+            <hr align="left" />
+        </div>
         <section class="section-a container-fluid">
 
 
@@ -134,9 +139,12 @@ include('PHP/contact-form.php');
         </section>
 
         <!-- Section b ends -->
-        <hr />
-        <!-- Section c begins -->
 
+        <!-- Section c begins -->
+        <div class="heading-transactions">
+            <h2>PAST RIDES</h2>
+            <hr align="left" />
+        </div>
         <section class="section-b container-fluid">
 
             <div class="past-transactions container-fluid my-container">
