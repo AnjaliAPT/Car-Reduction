@@ -50,6 +50,7 @@ include('PHP/contact-form.php');
         <a href="index.php"><img src="Resources/images/Group 4.png" id="logo-img"></a>
         <a href="index.php"><img src="Resources/images/img.png" alt="ferry" id="logo"></a>
       </div>
+
       <div class="btns col-md-4 anim_req" id="main-navbar">
         <a href="#loginmodal" data-toggle="modal" id="login-btn" class="btn btn-outline-primary">Login</a>
         <a href="#signupmodal" data-toggle="modal" id="signup-btn" class="btn btn-outline-primary">SignUp</a>
@@ -61,6 +62,27 @@ include('PHP/contact-form.php');
           <p class="anim-b3"><a class="hd-btn" href="#loginmodal">Find out more</a></p>
     </div>
   </header>
+
+  <?php
+  session_start();
+  if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
+  ?>
+
+    <script>
+      let component = document.getElementById('main-navbar');
+      // console.log(1);
+      // console.log(component.innerHTML);
+      component.innerHTML = `<a href = "main.php" class = "btn btn-outline-primary">Ride</a> 
+      <a href="php/logout.php" 
+      class="btn btn-outline-primary">Logout</a>`
+    </script>
+
+
+  <?php
+  }
+  ?>
+
+
 
   <!-- Header Section ends -->
 

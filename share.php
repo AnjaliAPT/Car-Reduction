@@ -2,8 +2,8 @@
 
 session_start();
 
-if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
-?>
+// if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
+// ?>
 
     <!DOCTYPE html>
     <html lang="en">
@@ -48,16 +48,7 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
 
     <body>
         <div class="arrow bounce"><i class="fa fa-arrow-circle-right fa-5x" id="go" aria-hidden="true"></i></div>
-        <div class="dtp">
-            <input id="input" class="dtp_input disabled" width="305" placeholder="Choose Date and Time" />
-            <script>
-                $('#input').datetimepicker({
-                    uiLibrary: 'bootstrap4',
-                    modal: true,
-                    footer: true
-                });
-            </script>
-        </div>
+
 
         <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.js"></script>
         <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.css" type="text/css" />
@@ -104,7 +95,16 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
             //250 is fade pixels
         });
     </script> -->
-
+        <div class="dtp">
+            <input id="input" class="dtp_input disabled" width="305" placeholder="Choose Date and Time" disabled autocomplete="off" />
+            <script>
+                $('#input').datetimepicker({
+                    uiLibrary: 'bootstrap4',
+                    modal: true,
+                    footer: true
+                });
+            </script>
+        </div>
         <script>
             const go = document.querySelector('#go');
 
@@ -224,10 +224,8 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
 
     </html>
 
-<?php
+// 
+// } else {
 
-} else {
-
-    header('location: index.php');
-
-}
+//     header('location: index.php');
+// }

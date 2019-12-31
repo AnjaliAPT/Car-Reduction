@@ -104,6 +104,14 @@
        width: 18rem;
    }
 
+
+   #mapbox-directions-destination-input>div>ul{
+       z-index: 1500 !important;
+       position: relative !important;
+       /* background-color: #4CAF50; */
+   }
+
+
    @import "compass/css3";
 
    @include keyframes(bounce) {
@@ -206,10 +214,10 @@
        position: absolute;
        /* background-color: red; */
        /* background: linear-gradient(to right, #5e92db, #39b2a7); */
-      
+
        /* color: #444;
         */
-        color: #4CAF50;
+       color: #4CAF50;
        /* background-color: #39b2a7; */
    }
 
@@ -234,11 +242,11 @@
        animation: bounce 2s infinite;
    }
 
-.arrow i:hover{
-cursor: pointer;
- /* color: rgba(63, 226, 63, 0.75); */
- color: #444;
-}
+   .arrow i:hover {
+       cursor: pointer;
+       /* color: rgba(63, 226, 63, 0.75); */
+       color: #444;
+   }
 
 
    @media screen and (max-width:750px) {
