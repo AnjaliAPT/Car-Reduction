@@ -560,38 +560,96 @@ footer .container-fluid .row {
 
 .nav-item {
   /* background-color: pink !important; */
-  margin: 2px;
-}
-
-.logout-a:hover {
-  width: 100%;
-}
-
-.logout-a:hover .logout {
-  opacity: 0.9;
-}
-
-.logout-a {
-  text-decoration: none;
-  color: white;
-  /* width: 25px; */
-  transition: width 0.35s;
-  -webkit-transition: width 0.35s;
-  overflow: hidden;
-}
-
-.logout {
-  font-size: 0.8em;
-  position: relative;
-  overflow: hidden;
-  letter-spacing: 3px;
-  opacity: 0;
-  transition: opacity 0.45s;
-  -webkit-transition: opacity 0.35s;
+  margin: 8px;
+  font-size: 1.2rem;
 }
 
 .nav-link {
+  font-weight: 500;
+}
+
+.logout {
+  font-size: 1.3rem;
+  font-family: 'Oswald', sans-serif;
+  position: relative;
+  right: -18px;
+  bottom: -4px;
+  overflow: hidden;
+  letter-spacing: 3px;
+  opacity: 0;
+  transition: opacity .45s;
+  -webkit-transition: opacity .35s;
+  /* background-color: #315F8A; */
+  color: rgba(20, 1, 1, 0.70);
+  /* border: 2px solid #000; */
+  border-radius: 10px;
+  padding: 5px;
+  font-weight: bold;
+}
+
+.nav-button {
+  text-decoration: none;
+  float: right;
+  padding: 12px;
+  margin: 15px;
+  color: white;
+  width: 80px;
+  transition: width .35s;
+  -webkit-transition: width .35s;
+  overflow: hidden;
+}
+
+
+
+
+.nav-a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-a i {
+  font-size: 1.8rem;
+}
+
+.nav-a:hover {
+  width: 180px;
+  text-decoration: none;
+}
+
+.nav-a:hover .logout {
+  opacity: .9;
+}
+
+
+.nav-link:hover {
+  color: rgba(0, 0, 0, 0.75) !important;
+  transition: 0.9s;
+
+}
+
+
+
+.nav-link {
   color: #fff !important;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: 50% 50%;
+  width: 100%;
+  height: 4px;
+  background-color: rgba(20, 1, 1, 0.568);
+  transition: transform 250ms;
+}
+
+.nav-link:hover::after {
+  transform: translateX(-50%) scaleX(1);
 }
 
 .section-a {
@@ -609,7 +667,9 @@ footer .container-fluid .row {
 
 .grab-image {
   height: 20rem;
-  width: 30rem;
+  width: 28rem;
+  position: relative;
+  right: 85px;
 }
 
 .share-image {
@@ -621,7 +681,6 @@ footer .container-fluid .row {
   margin-bottom: 100px;
   padding: 3rem;
 }
-
 
 .heading-transactions h2 {
   font-size: 2.5rem;
@@ -637,11 +696,127 @@ hr {
   width: 50vw;
 }
 
+.container-top {
+  /* background-color: blue; */
+  padding: 10px !important;
+}
+
+.column {
+  /* background-color: #5e92db; */
+}
+
+.column-content {
+  /* background-color: pink; */
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+
+.ag {
+  /* background-color: aqua; */
+  padding: 15px;
+}
+
+.ag h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #999999;
+}
+
+.row {
+  /* background-color: aqua; */
+}
+
+.column-image {
+  /* background-color: red; */
+  padding: 1px;
+  background-size: cover;
+}
+
+#arrow {
+  -webkit-transition: border 0.2s linear;
+  -moz-transition: border 0.2s linear;
+  -ms-transition: border 0.2s linear;
+  -o-transition: border 0.2s linear;
+  transition: border 0.2s linear;
+  text-decoration: none;
+  line-height: 0;
+  font-size: 32px;
+  height: 0;
+  border-bottom: 50px solid transparent;
+  border-top: 50px solid transparent;
+}
+
+.arrow1 {
+  border-right: 90px solid rgb(94, 146, 219);
+}
+
+#arrow>span {
+  -webkit-transition: margin 0.1s linear;
+  -moz-transition: margin 0.1s linear;
+  -ms-transition: margin 0.1s linear;
+  -o-transition: margin 0.1s linear;
+  transition: margin 0.1s linear;
+  font-family: "Open Sans", "Courier New", Courier, monospace;
+  line-height: 0;
+  margin-left: 44px;
+  margin-top: -1px;
+  position: absolute;
+  display: block;
+  color: white;
+  height: 0;
+}
+
+.arrow2 {
+  transform: rotateY(180deg);
+  border-right: 90px solid rgb(57, 178, 167);
+}
+
+#arrow:hover {
+  border-right-color: #333;
+}
+
+#arrow:hover>span {
+  margin-left: 48px;
+}
+
+
+#no-margin {
+  margin-top: 200px;
+}
+
+
+span {
+  transition: all 0.65s ease;
+  color: #999;
+}
+
+span.fades {
+  color: rgb(57, 178, 167) !important;
+
+}
+
 @media screen and (max-width: 1200px) {
   #a2 img {
     width: 14rem;
     height: 10rem;
     margin: 0px -30px;
+  }
+
+  .grab-image {
+    height: 18rem;
+    width: 24rem;
+    position: relative;
+    right: 85px;
+  }
+
+  .share-image {
+    height: 18rem;
+    width: 24rem;
+  }
+
+  .ag h1 {
+    font-size: 1.6rem;
   }
 }
 
@@ -649,6 +824,11 @@ hr {
   #logo {
     width: 8rem;
     height: 6.5rem;
+  }
+
+  .ag h1 {
+    font-size: 1.4rem;
+    font-weight: bold;
   }
 
   #logo-img {
@@ -659,6 +839,41 @@ hr {
 
   .btns a {
     width: 5.5rem;
+  }
+
+  .grab-image {
+    height: 15rem;
+    width: 20rem;
+    position: relative;
+    right: 85px;
+  }
+
+  .share-image {
+    height: 15rem;
+    width: 20rem;
+  }
+
+  #arrow {
+    font-size: 18px;
+    border-bottom: 30px solid transparent;
+    border-top: 30px solid transparent;
+  }
+
+  #arrow>span {
+    margin-left: 20px;
+    margin-top: -1px;
+  }
+
+  .arrow1 {
+    border-right: 50px solid rgb(94, 146, 219);
+  }
+
+  .arrow2 {
+    border-right: 50px solid rgb(57, 178, 167);
+  }
+
+  #arrow:hover>span {
+    margin-left: 26px;
   }
 }
 
@@ -684,6 +899,10 @@ hr {
 
   .row {
     width: 85vw;
+  }
+
+  .row-col {
+    flex-direction: column;
   }
 }
 
@@ -730,16 +949,54 @@ hr {
   }
 }
 
+@media screen and (max-width: 680px) {
+  .fa {
+    font-size: 3rem;
+  }
+}
+
 @media screen and (max-width: 600px) {
   #logo-img {
     margin-left: 2rem !important;
   }
 }
 
-@media screen and (max-width: 680px) {
-  .fa {
-    font-size: 3rem;
+@media screen and (max-width: 575px) {
+  body>main>section>div>div:nth-child(1)>div {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
+
+  .grab-image {
+    right: 0;
+  }
+
+  .column-image {
+    display: flex;
+    justify-content: center;
+  }
+
+  body>main>section>div>div>div {
+    width: 100vw !important;
+  }
+
+  .share-column {
+    margin-bottom: 100px;
+  }
+
+  .new-row {
+    display: flex;
+  }
+
+  .new-row .column-image {
+    order: 1;
+  }
+
+  .new-row .column-content {
+    order: 2;
+  }
+
 }
 
 @media screen and (max-width: 480px) {

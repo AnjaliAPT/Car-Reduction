@@ -555,7 +555,6 @@ include('PHP/contact-form.php');
       $(".ajaxform").submit(function(event) {
         event.preventDefault();
         document.querySelector("#login_error").innerHTML = "";
-        console.log("Stopped");
         var data = {};
         data.login_user = $("#login_user").val();
         data.login_pswd = $("#login_pswd").val();
@@ -567,7 +566,7 @@ include('PHP/contact-form.php');
           success: function(res) {
             console.log(res);
             if (res == 1) {
-              console.log('directing');
+              // console.log('directing');
               window.location.href = "main.php";
             } else {
               document.querySelector("#login_error").innerHTML = res;

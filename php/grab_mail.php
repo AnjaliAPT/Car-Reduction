@@ -1,67 +1,73 @@
 <?php
-ob_start();
-// print_r($_POST);
+// ob_start();
+// echo ("data: ");
+// print_r($_POST['change']);
+// echo ("data: ");
+if (($_SERVER["REQUEST_METHOD"] == "POST") && isset($_POST['change'])) {
 
-// foreach ($_POST as $key => $value)
-//     echo $key . '=' . $value . '<br />';
+	header('Cache-Control: no cache'); //no cache
+	session_cache_limiter('private_no_expire'); // works
+	//session_cache_limiter('public'); // works too
+	include('connect.php');
 
+	$change = $_POST['change'];
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	$query = "UPDATE share SET active=0 WHERE share_id=$change;";
+	print_r($query);
+	mysqli_query($db, $query);
 
-    header('Cache-Control: no cache'); //no cache
-    session_cache_limiter('private_no_expire'); // works
-    //session_cache_limiter('public'); // works too
-    include('connect.php');
-    $f_name = mysqli_real_escape_string($db, $_POST["name"]);
-    $l_name = mysqli_real_escape_string($db, $_POST["last_name"]);
-    $e = mysqli_real_escape_string($db, $_POST["email"]);
-    $mob = mysqli_real_escape_string($db, $_POST["mobile"]);
-    $gend = mysqli_real_escape_string($db, $_POST["gender"]);
-
-
-
-    $hsh = md5(rand(0, 1000));
-    $pswd = rand(10000, 99999);
-    $hash_pswd = md5($pswd);
-    $user = $f_name . $pswd;
-
-    $email_verify = "http://3e6462e8.ngrok.io//Car-Reduction/php/email_verify.php?email=$e&hash=$hsh";
-    $website = "http://3e6462e8.ngrok.io//Car-Reduction/index.php";
+	session_start();
 
 
-    // PHPMailer
+	$user = $_SESSION['user'];
+	$e = $_SESSION['email'];
+	$fname = $_SESSION["fname"];
+	$website = "http://ed49cfcc.ngrok.io/Car-Reduction/index.php";
 
-    require 'PHPMailerAutoload.php';
-    require 'credential.php';
+	$query = "SELECT * FROM share WHERE share_id=$change;";
+	echo $query;
+	$res = mysqli_query($db, $query);
+	$row = mysqli_fetch_assoc($res);
 
-    $mail = new PHPMailer;
+	$source = $row['source'];
+	$destination = $row['destination'];
+	$date = $row['date'];
+	$time = $row['time'];
+	$offer = $row['username'];
 
-    // $mail->SMTPDebug = 4;                               // Enable verbose debug output
+	// PHPMailer
 
-    $mail->isSMTP();                                      // Set mailer to use SMTP
-    $mail->Host = 'smtp.gmail.com;';  // Specify main and backup SMTP servers
-    $mail->SMTPAuth = true;                               // Enable SMTP authentication
-    $mail->Username = EMAIL;                 // SMTP username
-    $mail->Password = PASS;                           // SMTP password
-    $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-    $mail->Port = 587;                                    // TCP port to connect to
+	require 'PHPMailerAutoload.php';
+	require 'credential.php';
 
-    $mail->setFrom(EMAIL, 'ferry');
-    $mail->addAddress($e, $f_name . " " . $l_name);     // Add a recipient
-    // $mail->addAddress('ellen@example.com');               // Name is optional
-    $mail->addReplyTo('ferry | <noreply@ferry.com>');
-    // $mail->addCC('cc@example.com');
-    // $mail->addBCC('bcc@example.com');
+	$mail = new PHPMailer;
 
-    // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-    // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
-    $mail->isHTML(true);                                  // Set email format to HTML
+	// $mail->SMTPDebug = 4;                               // Enable verbose debug output
 
-    $mail->Subject = 'Confirm your Email';
+	$mail->isSMTP();                                      // Set mailer to use SMTP
+	$mail->Host = 'smtp.gmail.com;';  // Specify main and backup SMTP servers
+	$mail->SMTPAuth = true;                               // Enable SMTP authentication
+	$mail->Username = EMAIL;                 // SMTP username
+	$mail->Password = PASS;                           // SMTP password
+	$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+	$mail->Port = 587;                                    // TCP port to connect to
+
+	$mail->setFrom(EMAIL, 'ferry');
+	$mail->addAddress($e, $fname);     // Add a recipient
+	// $mail->addAddress('ellen@example.com');               // Name is optional
+	$mail->addReplyTo('ferry | <noreply@ferry.com>');
+	// $mail->addCC('cc@example.com');
+	// $mail->addBCC('bcc@example.com');
+
+	// $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+	// $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+	$mail->isHTML(true);                                  // Set email format to HTML
+
+	$mail->Subject = 'Accepted a ride';
 
 
 
-    $mail->Body    = '
+	$mail->Body    = '
     
     
     
@@ -299,21 +305,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px; font-family: Georgia, \'Times New Roman\', serif"><![endif]-->
 <div style="color:#134C75;font-family:\'Bitter\', Georgia, Times, \'Times New Roman\', serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
 <div style="line-height: 1.2; font-size: 12px; color: #134C75; font-family: \'Bitter\', Georgia, Times, \'Times New Roman\', serif; mso-line-height-alt: 14px;">
-<p style="text-align: center; line-height: 1.2; word-break: break-word; font-size: 28px; mso-line-height-alt: 34px; margin: 0;"><span style="font-size: 28px;">CONFIRM YOUR EMAIL ADDRESS</span></p>
+<p style="text-align: center; line-height: 1.2; word-break: break-word; font-size: 28px; mso-line-height-alt: 34px; margin: 0;"><span style="font-size: 28px;">ACCEPTED A RIDE</span></p>
 </div>
 </div>
 <!--[if mso]></td></tr></table><![endif]-->
 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px; font-family: Arial, sans-serif"><![endif]-->
 <div style="color:#555555;font-family:Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif;line-height:1.5;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
 <div style="font-size: 12px; line-height: 1.5; color: #555555; font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif; mso-line-height-alt: 18px;">
-<p style="font-size: 18px; line-height: 1.5; word-break: break-word; mso-line-height-alt: 27px; margin: 0;"><span style="font-size: 18px;">Please&nbsp;click&nbsp;the&nbsp;button&nbsp;below&nbsp;to&nbsp;confirm&nbsp;your&nbsp;email&nbsp;address.</span></p>
+<p style="font-size: 18px; line-height: 1.5; word-break: break-word; mso-line-height-alt: 27px; margin: 0;"><span style="font-size: 18px;">Hello&nbsp;' . $fname . ',&nbsp;Hope&nbsp;you&nbsp;are&nbsp;enjoying&nbsp;ferry.<br/>The&nbsp;details&nbsp;of&nbsp;last&nbsp;ride&nbsp;you&nbsp;accepted&nbsp;are&nbsp;as&nbsp;follows:</span></p>
 </div>
 </div>
 <!--[if mso]></td></tr></table><![endif]-->
-<div align="center" class="button-container" style="padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
-<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"><tr><td style="padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px" align="center"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="' . $email_verify . '" style="height:39pt; width:147pt; v-text-anchor:middle;" arcsize="49%" stroke="false" fillcolor="rgb(8, 78, 131)"><w:anchorlock/><v:textbox inset="0,0,0,0"><center style="color:#ffffff; font-family:Arial, sans-serif; font-size:14px"><![endif]--><a href="' . $email_verify . '" style="-webkit-text-size-adjust: none; text-decoration: none; display: inline-block; color: #ffffff; background-color: rgb(8, 78, 131); border-radius: 25px; -webkit-border-radius: 25px; -moz-border-radius: 25px; width: auto; width: auto; border-top: 1px solid rgb(8, 78, 131); border-right: 1px solid rgb(8, 78, 131); border-bottom: 1px solid rgb(8, 78, 131); border-left: 1px solid rgb(8, 78, 131); padding-top: 10px; padding-bottom: 10px; font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif; text-align: center; mso-border-alt: none; word-break: keep-all;" target="_blank"><span style="padding-left:30px;padding-right:30px;font-size:14px;display:inline-block;"><span style="font-size: 16px; line-height: 2; word-break: break-word; mso-line-height-alt: 32px;"><span data-mce-style="font-size: 14px; line-height: 28px;" style="font-size: 14px; line-height: 28px;">CONFIRM EMAIL</span></span></span></a>
-<!--[if mso]></center></v:textbox></v:roundrect></td></tr></table><![endif]-->
-</div>
+
 <table border="0" cellpadding="0" cellspacing="0" class="divider" role="presentation" style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" valign="top" width="100%">
 <tbody>
 <tr style="vertical-align: top;" valign="top">
@@ -333,10 +336,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <div style="color:#555555;font-family:Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif;line-height:1.8;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
 <div style="line-height: 1.8; font-size: 12px; color: #555555; font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif; mso-line-height-alt: 22px;">
 
-<p style="line-height: 1.8; word-break: break-word; font-size: 15px; mso-line-height-alt: 27px; margin: 0;"text-align: center;"><span style="font-size: 15px;"><strong>USERNAME </strong>&nbsp;:&nbsp;' . $user . '</span></p>
-<p style="line-height: 1.8; word-break: break-word; font-size: 15px; mso-line-height-alt: 27px; margin: 0;"text-align: center;"><span style="font-size: 15px;"><strong>PASSWORD </strong>&nbsp;:&nbsp;' . $pswd . '</span></p><br/>
-<p style="line-height: 1.8; word-break: break-word; font-size: 15px; mso-line-height-alt: 27px; margin: 0;"><span style="font-size: 15px;">In case the above link is not working, manually insert the following URL :</span></p>
-<p style="line-height: 1.8; word-break: break-word; font-size: 15px; mso-line-height-alt: 27px; margin: 0;"><span style="font-size: 15px;">' . $email_verify . '</span></p>
+<p style="line-height: 1.8; word-break: break-word; font-size: 15px; mso-line-height-alt: 27px; margin: 0;"text-align: center;"><span style="font-size: 15px;"><strong>SOURCE </strong>&nbsp;:&nbsp;' . $source . '</span></p>
+<p style="line-height: 1.8; word-break: break-word; font-size: 15px; mso-line-height-alt: 27px; margin: 0;"text-align: center;"><span style="font-size: 15px;"><strong>DESTINATION</strong>&nbsp;:&nbsp;' . $destination . '</span></p>
+<p style="line-height: 1.8; word-break: break-word; font-size: 15px; mso-line-height-alt: 27px; margin: 0;"text-align: center;"><span style="font-size: 15px;"><strong>DATE</strong>&nbsp;:&nbsp;' . $date . '</span></p>
+<p style="line-height: 1.8; word-break: break-word; font-size: 15px; mso-line-height-alt: 27px; margin: 0;"text-align: center;"><span style="font-size: 15px;"><strong>TIME</strong>&nbsp;:&nbsp;' . $time . '</span></p>
+<p style="line-height: 1.8; word-break: break-word; font-size: 15px; mso-line-height-alt: 27px; margin: 0;"text-align: center;"><span style="font-size: 15px;"><strong>OFFERED BY</strong>&nbsp;:&nbsp;' . $offer . '</span></p><br/>
+<p style="line-height: 1.8; word-break: break-word; font-size: 15px; mso-line-height-alt: 27px; margin: 0;"><span style="font-size: 15px;">Wish you a wonderful trip that is filled with lots of sweet memories.</span></p>
+<p style="line-height: 1.8; word-break: break-word; font-size: 15px; mso-line-height-alt: 27px; margin: 0;"><span style="font-size: 15px;">Bon voyage!</span></p>
 <br/>
 <p style="line-height: 1.8; word-break: break-word; font-size: 15px; mso-line-height-alt: 27px; margin: 0;"><span style="font-size: 15px;">Cheers,</span></p>
 <p style="line-height: 1.8; word-break: break-word; font-size: 15px; mso-line-height-alt: 27px; margin: 0;"><span style="font-size: 15px;">The Ferry Team</span></p>
@@ -425,54 +431,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-    if (!$mail->send()) {
-        echo "<script>";
-        echo "window.location = '../error.php';"; // redirect with javascript, after page loads
-        echo "</script>";
-        // echo 'Message could not be sent.';
-        // echo 'Mailer Error: ' . $mail->ErrorInfo;
-    }
+	if (!$mail->send()) {
+		echo "<script>";
+		echo "window.location = '../error.php';"; // redirect with javascript, after page loads
+		echo "</script>";
+		// echo 'Message could not be sent.';
+		// echo 'Mailer Error: ' . $mail->ErrorInfo;
+	}
 
 
 
 
 
-    //PHPMailer
+	//PHPMailer
 
-
-    // https://myaccount.google.com/u/0/lesssecureapps?pli=1
-
-
-
-    if (isset($_POST["car_binary"])) {
-        $car_bin = 1;
-        $reg = mysqli_real_escape_string($db, $_POST["registration_no"]);
-        $type = mysqli_real_escape_string($db, $_POST["car_type"]);
-        $no = mysqli_real_escape_string($db, $_POST["car_no"]);   
-        $query = "INSERT INTO `cars`(`registration_no`, `car_type`,`car_no`,  `username`) VALUES ('$reg','$type','$no','$user');";
-        // echo ($query);
-        mysqli_query($db, $query);
-    } else {
-        $car_bin = 0;
-    }
-    $query = "INSERT INTO `user`(`first_name`, `last_name`,`email`, `mobile`, `gender`, `password`, `car_binary`, `email_binary`, `username`, `hash`) VALUES ('$f_name','$l_name','$e', '$mob', '$gend','$pswd',$car_bin,0,'$user','$hsh');";
-    mysqli_query($db, $query);
-
-    echo "<script>";
-    // echo "alert('An email has been sent to you. Confirm your email to login');";
-    echo "alert('Thanks for signing up. Please check your email for confirmation!');";
-    echo "window.location.href = '../index.php';"; // redirect with javascript, after page loads
-    echo "</script>";
-
-    // ob_end_clean();
-    // die();
-}
-// session_destroy();
-
-function test_input($data)
-{
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
+	ob_end_clean();
+	die();
+	// session_destroy();
+} 

@@ -23,9 +23,10 @@ if (isset($_POST['login_user']) && isset($_POST['login_pswd'])) {
                 die();
             } else {
                 session_start();
-                echo 1;
-                $_SESSION['name'] = $res['first_name'];
-                $_SESSION['user'] = $res['username'];;
+                $_SESSION['fname'] = $res['first_name'];
+                $_SESSION['user'] = $res['username'];
+                $_SESSION['email'] = $res['email'];
+                echo $num;
                 // header("location: ../main.php");
                 ob_end_flush();
                 die();

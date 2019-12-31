@@ -10,12 +10,12 @@ date_default_timezone_set("Asia/Kolkata");
 
 
 session_start();
-$_SESSION['user'] = "test";
-$username = $_SESSION['user'];
+
+$user = $_SESSION['user'];
 
 
 
-$extract = "SELECT * FROM share WHERE (username='$username' OR acceptor_username='$username') AND active=1 ORDER BY share_id DESC;";
+$extract = "SELECT * FROM share WHERE (username='$user' OR acceptor_username='$user') AND active=1 ORDER BY share_id DESC;";
 // echo $extract;
 $res = mysqli_query($db, $extract);
 // echo $res;
@@ -73,7 +73,7 @@ if ($res_check > 0) {
         <div class="row my-row slide-active" id="<?= $row["share_id"] ?>">
 
             <?php
-            if ($row["acceptor_username"] == $username) {
+            if ($row["acceptor_username"] == $user) {
             ?>
 
                 <script>
