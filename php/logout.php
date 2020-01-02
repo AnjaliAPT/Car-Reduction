@@ -7,8 +7,8 @@ unset($_SESSION['user']);
 unset($_SESSION['fname']);
 unset($_SESSION['email']);
 
-echo "<script>"
+echo "<script>";
 echo "alert('You are now logged out')";
-echo </script>
+echo "</script>";
 
 header('../index.php');
