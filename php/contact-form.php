@@ -1,5 +1,5 @@
 <?php
-// ob_start();
+ob_start();
 $name_error = $email_error = $company_error = $subject_error = $text_error = "";
 $nme = $eml = $cmp = $sbj = $msg = "";
 
@@ -42,12 +42,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($name_error == "" and $email_error == "" and $subject_error == "" and $company_error == "" and $text_error == "") {
 
-        $name_error = $email_error = $company_error = $subject_error = $text_error = "";
-        $nme = $eml = $cmp = $sbj = $msg = "";
+
+        $website = "";
+
+?>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.css" integrity="sha256-2bAj1LMT7CXUYUwuEnqqooPb1W0Sw0uKMsqNH0HwMa4=" crossorigin="anonymous" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js" integrity="sha256-2RS1U6UNZdLS0Bc9z2vsvV4yLIbJNKxyA4mrx5uossk=" crossorigin="anonymous"></script>
 
 
 
-
+        <?php
 
         // PHPMailer
 
@@ -353,7 +359,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <p style="line-height: 1.8; word-break: break-word; font-size: 15px; mso-line-height-alt: 27px; margin: 0;"text-align: center;"><span style="font-size: 15px;"><strong>Name</strong>&nbsp;:&nbsp;' . $nme . '</span></p>
 <p style="line-height: 1.8; word-break: break-word; font-size: 15px; mso-line-height-alt: 27px; margin: 0;"text-align: center;"><span style="font-size: 15px;"><strong>COMPANY</strong>&nbsp;:&nbsp;' . $cmp . '</span></p>
 <p style="line-height: 1.8; word-break: break-word; font-size: 15px; mso-line-height-alt: 27px; margin: 0;"text-align: center;"><span style="font-size: 15px;"><strong>EMAIL</strong>&nbsp;:&nbsp;' . $eml . '</span></p><br/>
-<p style="line-height: 1.8; word-break: break-word; font-size: 15px; mso-line-height-alt: 27px; margin: 0;"><span style="font-size: 15px;">'.$msg.'</span></p>
+<p style="line-height: 1.8; word-break: break-word; font-size: 15px; mso-line-height-alt: 27px; margin: 0;"><span style="font-size: 15px;">' . $msg . '</span></p>
 <br/>
 <p style="line-height: 1.8; word-break: break-word; font-size: 15px; mso-line-height-alt: 27px; margin: 0;"><span style="font-size: 15px;">Cheers,</span></p>
 <p style="line-height: 1.8; word-break: break-word; font-size: 15px; mso-line-height-alt: 27px; margin: 0;"><span style="font-size: 15px;">The Ferry Team</span></p>
@@ -440,46 +446,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     ';
 
 
-
+        $name_error = $email_error = $company_error = $subject_error = $text_error = "";
+        $nme = $eml = $cmp = $sbj = $msg = "";
 
         if (!$mail->send()) {
-            echo "<script>";
-            echo "window.location = '../error.php';"; // redirect with javascript, after page loads
-            echo "</script>";
-            // echo 'Message could not be sent.';
-            // echo 'Mailer Error: ' . $mail->ErrorInfo;
+        ?>
+            <script>
+                $(document).ready(function() {
+                    Swal.fire({
+                        type: 'error',
+                        title: 'Oops...',
+                        padding: '3em',
+                        text: 'Something went wrong!<br/>Your message could not be delivered.',
+                    }, function() {
+                        window.location.href = "index.php";
+                    });
+                });
+            </script>
+        <?php
+
+        } else {
+        ?>
+            <script>
+                $(document).ready(function() {
+                    // console.log('here');
+                    Swal.fire({
+                        title: 'Your message has been delivered.',
+                        width: 600,
+                        type: 'success',
+                        padding: '3em'
+                    }, function() {
+                        window.location.href = "index.php";
+                    });
+                });
+            </script>
+<?php
+            header('location: index.php');
         }
 
 
-
-
-
         //PHPMailer
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        echo "<script>";
-        echo "alert('Your message has been sent. Thank you');";
-        echo "window.location = 'index.php';"; // redirect with javascript, after page loads
-        echo "</script>";
 
 
         // header('Cache-Control: no cache'); //no cache
@@ -487,13 +493,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //session_cache_limiter('public'); // works too
         // session_start();
         // include('connect.php');
-        // ob_end_clean();
-        // header("location: index.php");
 
-        die();
     }
     // session_destroy();
-
+    // );exit(
+    // ob_end_clean();
+    // die();
 }
 
 

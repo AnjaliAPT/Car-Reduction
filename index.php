@@ -64,7 +64,7 @@ include('PHP/contact-form.php');
     <div class="hd-header-content text-center">
       <h1 class="header-h1 anim">Carpool. Connect. Conserve.</h1>
       <p class="header-p anim-1">Sharing your journey<p>
-          <p class="anim-b3"><a class="hd-btn" href="#loginmodal">Find out more</a></p>
+          <p class="anim-b3"><a class="hd-btn" href="#bbn">Find out more</a></p>
     </div>
   </header>
 
@@ -359,7 +359,7 @@ include('PHP/contact-form.php');
   <!-- Section a ends -->
 
 
-  <div class="banner container-fluid text-center">
+  <div class="banner container-fluid text-center" id="bbn">
     <h1>How does it works</h1>
   </div>
 
@@ -644,7 +644,7 @@ include('PHP/contact-form.php');
   <script src="JS/car_binary.js">
   </script>
   <script src="JS/form_validation.js"></script>
-  <script src="observer.js"></script>
+  <script src="JS/observer.js"></script>
   <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({

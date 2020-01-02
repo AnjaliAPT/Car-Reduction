@@ -86,7 +86,7 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
                             </li>
                             <hr id="hrs">
                             <li class="nav-item">
-                                <a class="nav-button nav-link nav-a" href="">
+                                <a class="nav-button nav-link nav-a" href="php/logout.php">
                                     <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                                     <div class="logout">LOGOUT</div>
                                 </a>

@@ -32,7 +32,7 @@ if (isset($_GET['email']) && !empty($_GET['email']) and isset($_GET['hash']) && 
 
 ?>
             <script>
-                console.log('Alerted');
+                // console.log('Alerted');
                 $(document).ready(function() {
                     Swal.fire({
                         title: 'Congrats! Your account is activated.',
@@ -43,7 +43,7 @@ if (isset($_GET['email']) && !empty($_GET['email']) and isset($_GET['hash']) && 
                     })
                 })
 
-                "window.location.href = '../index.php';"; // redirect with javascript, after page loads
+                window.location.href = '../index.php'; // redirect with javascript, after page loads
             </script>
 
 

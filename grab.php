@@ -37,6 +37,8 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.css" integrity="sha256-2bAj1LMT7CXUYUwuEnqqooPb1W0Sw0uKMsqNH0HwMa4=" crossorigin="anonymous">
+
         <!-- CSS Stylesheet -->
         <link rel="stylesheet" href="css/grab.css">
 
@@ -74,7 +76,7 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
                             </li>
                             <hr id="hrs">
                             <li class="nav-item">
-                                <a class="nav-button nav-link nav-a" href="">
+                                <a class="nav-button nav-link nav-a" href="php/logout.php">
                                     <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                                     <div class="logout">LOGOUT</div>
                                 </a>
@@ -88,7 +90,12 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
 
         <main>
 
+            <div class="h2s">
+                <h1> AVAILABLE RIDES</h1>
+            </div>
+
             <div class="section-a container-fluid my-container">
+
                 <div class="row my-row">
                     <?php
                     $query = "SELECT * FROM share WHERE active=1 AND username!='$user';";
@@ -195,14 +202,14 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
         <!-- Footer ends -->
 
 
-        <script>
+        <!-- <script>
             var loader = document.getElementById("loader");
             window.addEventListener('load', function() {
                 // setTimeout(function() {
                 loader.style.display = 'none';
                 // }, 3000);
             });
-        </script>
+        </script> -->
 
 
 
@@ -214,34 +221,67 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
                 }, 'google_translate_element');
             }
         </script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js" integrity="sha256-2RS1U6UNZdLS0Bc9z2vsvV4yLIbJNKxyA4mrx5uossk=" crossorigin="anonymous"></script>
+
         <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
         <script>
             function booked(change) {
-                console.log(change);
-                let r = confirm('Confirm Ride');
+
+                var r = 0;
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You want to confirm your ride",
+                    type: 'success',
+                    showCancelButton: true,
+                    confirmButtonColor: '#4CAF50',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'CONFIRM'
+                }).then((result) => {
+                    if (result.value) {
+                        r = 1;
+                        console.log(r);
+                        $.ajax({
+
+                            url: 'php/grab_mail.php',
+                            method: "post",
+                            data: dat,
+                            success: function(res) {
+                                // console.log(res);
+                                Swal.fire({
+                                    title: 'Your ride is confirmed',
+                                    width: 600,
+                                    type: 'success',
+                                    padding: '3em',
+                                });
+                                window.location.href = "main.php";
+                            },
+                            error: function(res) {
+                                // console.log(res);
+                                Swal.fire({
+                                    title: 'Something went wrong',
+                                    width: 600,
+                                    type: 'error',
+                                    padding: '3em',
+                                });
+                            }
+                        })
+                        // console.log(r);
+                    } else {
+                        r = 0;
+                        // console.log(r);
+                        return;
+                    }
+                });
+                // console.log(r);
                 var dat = {};
 
                 dat.change = change;
 
-                if (r == true) {
-                    $.ajax({
 
-                        url: 'php/grab_mail.php',
-                        method: "post",
-                        data: dat,
-                        success: function(res) {
-                            // console.log(res);
-                            alert('Your ride is confirmed');
-                            window.location.href = "main.php";
-                        },
-                        error: function(res) {
-                            // console.log(res);
-                            window.location.href = "error.php";
-                        }
-                    })
-                } else
-                    return;
+
             }
         </script>
 
