@@ -33,9 +33,9 @@ include('PHP/contact-form.php');
 <body>
 
 
-  <!-- <div id="loader" class="container-fluid">
+  <div id="loader" class="container-fluid">
     <img src="Resources/images/Group5.png" alt="Ferry" id="loader-img">
-  </div> -->
+  </div>
 
 
 
@@ -250,7 +250,7 @@ include('PHP/contact-form.php');
                         </div>
 
                         <div class="custom-control custom-checkbox">
-                          <input type="checkbox" class="custom-control-input" id="rememberme" name="remberme">
+                          <input type="checkbox" class="custom-control-input" id="rememberme" name="rememberme">
                           <label class="custom-control-label" for="rememberme"></label>&nbsp;&nbsp;Remember Me</label>
                         </div>
 
@@ -569,20 +569,22 @@ include('PHP/contact-form.php');
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
   </script>
 
-  <!-- <script>
-    $('body').addClass('stop-scrolling');
-    $('body').bind('touchmove', function(e) {
-      e.preventDefault()
-    });
+  <script>
+    $('html, body').css({
+      'overflow': 'hidden',
+      'height': '100%'
+    })
     var loader = document.getElementById("loader");
     window.addEventListener('load', function() {
-      // setTimeout(function() {
-      $('body').removeClass('stop-scrolling');
-      loader.style.display = 'none';
-      $('body').unbind('touchmove');
-      // }, 3000);
+      setTimeout(function() {
+        $('html, body').css({
+          'overflow': 'auto',
+          'height': 'auto'
+        })
+        loader.style.display = 'none';
+      }, 2000);
     });
-  </script> -->
+  </script>
 
 
   <!-- // Popper JS -->
@@ -622,6 +624,7 @@ include('PHP/contact-form.php');
         var data = {};
         data.login_user = $("#login_user").val();
         data.login_pswd = $("#login_pswd").val();
+        data.rememberme = $("#rememberme").is(':checked');
 
         $.ajax({
           url: 'php/login_validation.php',

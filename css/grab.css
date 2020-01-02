@@ -28,6 +28,15 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    top: 0;
+    left: 0;
+}
+
+
+
+#loader-img {
+    animation: show-hide 2s linear 0s infinite normal;
+    height: 40vh;
 }
 
 #hrs {
@@ -39,10 +48,6 @@ body {
     height: 2px;
 }
 
-
-#loader-img {
-    animation: show-hide 2s linear 0s infinite normal;
-}
 
 @keyframes show-hide {
     0% {
@@ -298,9 +303,7 @@ body {
     top: 29px;
 }
 
-body {
-    margin-top: 200px;
-}
+
 
 
 .h2s {
@@ -317,6 +320,12 @@ body {
     color: #315F8A;
     font-size: 3rem;
     font-weight: 1000;
+}
+
+
+
+main{
+    padding-top: 200px;
 }
 
 .section-a {

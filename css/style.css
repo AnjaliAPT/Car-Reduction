@@ -12,7 +12,7 @@ body {
   font-size: 1rem;
   font-weight: normal;
   line-height: 1.5;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
   width: 100%;
   --nav-Color: transparent;
   --main-Color: linear-gradient(to right, #5e92db, #39b2a7);
@@ -22,16 +22,19 @@ body {
 #loader {
   background: linear-gradient(to right, #5e92db, #39b2a7);
   position: absolute;
-  z-index: 10000;
-  width: 100vw;
-  height: 100vh;
+  z-index: 2000;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  top: 0;
+  left: 0;
 }
 
 #loader-img {
   animation: show-hide 2s linear 0s infinite normal;
+  height: 40vh;
 }
 
 @keyframes show-hide {
@@ -163,7 +166,7 @@ nav {
   z-index: 100;
   color: #ffffff;
   background-color: transparent;
-  width: 105vw;
+  width: 100vw;
   /* position: absolute; */
   position: fixed;
   top: 0px;

@@ -56,10 +56,10 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
 
     <body>
 
-        <!-- 
-    <div id="loader" class="container-fluid">
-        <img src="Resources/images/Group5.png" alt="Ferry" id="loader-img">
-    </div> -->
+
+        <div id="loader" class="container-fluid">
+            <img src="Resources/images/Group5.png" alt="Ferry" id="loader-img">
+        </div>
 
 
 
@@ -213,13 +213,22 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
 
 
         <script>
+            $('html, body').css({
+                'overflow': 'hidden',
+                'height': '100%'
+            })
             var loader = document.getElementById("loader");
             window.addEventListener('load', function() {
-                // setTimeout(function() {
-                loader.style.display = 'none';
-                // }, 3000);
+                setTimeout(function() {
+                    $('html, body').css({
+                        'overflow': 'auto',
+                        'height': 'auto'
+                    })
+                    loader.style.display = 'none';
+                }, 3000);
             });
         </script>
+    
 
 
 

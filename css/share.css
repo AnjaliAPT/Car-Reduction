@@ -21,10 +21,13 @@
      display: flex;
      align-items: center;
      justify-content: center;
+     top: 0;
+     left: 0;
  }
 
  #loader-img {
      animation: show-hide 2s linear 0s infinite normal;
+     height: 40vh;
  }
 
  @keyframes show-hide {
@@ -306,26 +309,26 @@
      /* color: rgba(63, 226, 63, 0.75); */
      color: #444;
  }
- 
-@media screen and (max-width: 991px) {
 
-    #hrs {
-        display: block;
-    }
+ @media screen and (max-width: 991px) {
 
-    .nav-a {
-        width: 180px;
-    }
+     #hrs {
+         display: block;
+     }
 
-    .logout {
-        opacity: 1;
-        color: #ffffff;
-    }
+     .nav-a {
+         width: 180px;
+     }
 
-    .logout:hover {
-        color: rgba(0, 0, 0, 0.75);
-    }
-}
+     .logout {
+         opacity: 1;
+         color: #ffffff;
+     }
+
+     .logout:hover {
+         color: rgba(0, 0, 0, 0.75);
+     }
+ }
 
  @media screen and (max-width:680px) {
 
