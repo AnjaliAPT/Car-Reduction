@@ -19,7 +19,34 @@ body {
   /* background-color: pink; */
 }
 
+#loader {
+  background: linear-gradient(to right, #5e92db, #39b2a7);
+  position: absolute;
+  z-index: 10000;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+#loader-img {
+  animation: show-hide 2s linear 0s infinite normal;
+}
+
+@keyframes show-hide {
+  0% {
+    opacity: 1;
+  }
+
+  25% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
 
 a {
   text-decoration: none;
@@ -354,6 +381,30 @@ nav {
   font-weight: 600;
   width: 50%;
   cursor: pointer;
+  outline: none !important;
+}
+
+.btnregister.active,
+.btnRegister.focus {
+  outline: none;
+}
+
+button.close {
+  font-size: 2rem;
+}
+
+button.close:hover {
+  cursor: pointer;
+  opacity: 0.75;
+}
+
+button.close:active,
+button.close:focus {
+  outline: none;
+}
+
+.btnRegister:hover {
+  opacity: 0.85;
 }
 
 .register .nav-tabs {
@@ -1133,6 +1184,27 @@ body>section.section.section-c.container-fluid>div>div.video-part.column.col-lg-
   }
 }
 
+
+
+.register-left input {
+  margin-bottom: 30% !important;
+}
+
+
+.register-left p {
+  padding: 0;
+  margin-top: 12%;
+}
+
+.btn:focus,
+.btn:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+
+
+
 @media screen and (max-width: 1200px) {
   .hd-header-content {
     zoom: 0.95;
@@ -1270,6 +1342,12 @@ body>section.section.section-c.container-fluid>div>div.video-part.column.col-lg-
     bottom: 0;
     left: 160px;
   }
+
+  .modal-dialog {
+    max-width: 710px !important;
+  }
+
+
 }
 
 @media screen and (max-width: 850px) {
@@ -1301,7 +1379,18 @@ body>section.section.section-c.container-fluid>div>div.video-part.column.col-lg-
     } 
    } */
 
+@media screen and (max-width: 767px) {
+  .modal-content {
+    background: transparent !important;
+    border: 0 !important;
+  }
 
+  .mrx {
+    display: flex;
+    justify-content: center;
+  }
+
+}
 
 
 
@@ -1368,6 +1457,8 @@ body>section.section.section-c.container-fluid>div>div.video-part.column.col-lg-
     font-size: 1.5rem;
   }
 }
+
+
 
 @media screen and (max-width: 500px) {
   .section-b-p {

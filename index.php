@@ -1,6 +1,7 @@
 <?php
 include('PHP/contact-form.php');
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,19 +11,12 @@ include('PHP/contact-form.php');
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Ferry | Sharing your journeys</title>
 
+
   <link rel="icon" type="image/png" href="Resources/images/Group4.png">
+
 
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-
-  <!-- jQuery library -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-  <!-- Popper JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-  <!-- Latest compiled JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
   <!-- Material Google icon theme -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -31,9 +25,20 @@ include('PHP/contact-form.php');
   <!-- CSS Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 
+
+
+
 </head>
 
 <body>
+
+
+  <!-- <div id="loader" class="container-fluid">
+    <img src="Resources/images/Group5.png" alt="Ferry" id="loader-img">
+  </div> -->
+
+
+
 
   <!-- Header Section begins-->
 
@@ -97,14 +102,14 @@ include('PHP/contact-form.php');
               <img src="Resources/images/img.png" id="b1" alt="ferry" />
               <h3>Welcome</h3>
               <p>You are moments away from creating your account</p>
-              <input type="submit" id="inner-submit-button" onclick="" value="LOGIN" /><br />
+              <input type="submit" id="inner-submit-button" value="LOGIN" href="#loginmodal" data-toggle="modal" onclick="Closer('close1')" /><br />
             </div>
             <div class="col-md-9 register-right">
 
               <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                   <h3 class="register-heading">SIGNUP</h3>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close1">&times;</button>
 
 
                   <form action="php/signup_validation.php" class="needs-validation" method="post" novalidate>
@@ -148,7 +153,7 @@ include('PHP/contact-form.php');
                         </div>
                         <div class="form-group">
                           <div class="maxl">
-                            <span style="color:#8E959B">Gender : &nbsp;</span>
+                            <span style="color:#8E959B">Gender : &nbsp;</span><br />
                             <label class="radio-inline">
                               <input type="radio" name="gender" value="male" checked>
                               <span> Male </span>
@@ -182,7 +187,7 @@ include('PHP/contact-form.php');
                         <div class="valid-feedback"></div>
                         <div class="invalid-feedback"> Please fill out this field.</div>
                       </div>
-                      <div class="col-md-6">
+                      <div class="col-md-6 mrx">
                         <input type="submit" class="btnRegister" value="REGISTER" />
                       </div>
 
@@ -210,14 +215,14 @@ include('PHP/contact-form.php');
               <img src="Resources/images/img.png" id="b1" alt="ferry" />
               <h3>Welcome</h3>
               <p>New to ferry</p>
-              <input type="submit" name="" value="SIGNUP" /><br />
+              <input type="submit" name="" value="SIGNUP" href="#signupmodal" data-toggle="modal" onclick="Closer('close2')" /><br />
             </div>
             <div class="col-md-9 register-right">
 
               <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                   <h3 class="register-heading">LOGIN</h3>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close2">&times;</button>
 
                   <form action="PHP/login_validation.php" method="POST" class="ajaxform">
 
@@ -236,7 +241,8 @@ include('PHP/contact-form.php');
 
                         <div class="form-group input-group">
                           <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="material-icons">&#xe7ff;</i></span>
+                            <span class="input-group-text"><i class="material-icons">lock</i>
+                            </span>
                           </div>
                           <input type="password" class="form-control" placeholder="Password" id="login_pswd" value="" name="login_pswd" />
                           <div class="valid-feedback"></div>
@@ -251,7 +257,7 @@ include('PHP/contact-form.php');
 
                         <div id="login_error" class="error"></div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-6 mrx">
                           <input type="submit" class="btnRegister" value="LOGIN" />
                         </div>
 
@@ -559,6 +565,36 @@ include('PHP/contact-form.php');
 
   <!-- Javascript -->
 
+  <!-- // jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+  </script>
+
+  <!-- <script>
+    $('body').addClass('stop-scrolling');
+    $('body').bind('touchmove', function(e) {
+      e.preventDefault()
+    });
+    var loader = document.getElementById("loader");
+    window.addEventListener('load', function() {
+      // setTimeout(function() {
+      $('body').removeClass('stop-scrolling');
+      loader.style.display = 'none';
+      $('body').unbind('touchmove');
+      // }, 3000);
+    });
+  </script> -->
+
+
+  <!-- // Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+  <!-- // Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+
+
+
+
   <script src="https://unpkg.com/scrollreveal@3.3.2/dist/scrollreveal.min.js"></script>
 
   <script src="JS/app.js">
@@ -570,7 +606,13 @@ include('PHP/contact-form.php');
 
 
 
-
+  <script>
+    function Closer(s) {
+      // console.log(s);
+      r = document.getElementById(s).click();
+      // console.log(r);
+    }
+  </script>
 
   <script>
     $(document).ready(function() {
@@ -586,7 +628,7 @@ include('PHP/contact-form.php');
           method: "post",
           data: data,
           success: function(res) {
-            console.log(res);
+            // console.log(res);
             if (res == 1) {
               // console.log('directing');
               window.location.href = "main.php";

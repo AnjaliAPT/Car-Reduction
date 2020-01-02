@@ -85,7 +85,10 @@ if ($res_check > 0) {
 } else {
 
     ?>
-    <h1>Not Found</h1>
+    <div class="notfound">
+        <h2>No Rides Found</h2>
+        <img src="Resources/images/nodata.png" class="active_img">
+    </div>
 <?php
 
 }

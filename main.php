@@ -55,6 +55,10 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
 
     <body>
 
+        <!-- <div id="loader" class="container-fluid">
+            <img src="Resources/images/Group5.png" alt="Ferry" id="loader-img">
+        </div> -->
+
         <!-- Header Section begins-->
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -80,6 +84,7 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
                             <li class="nav-item">
                                 <a class="nav-link" href="grab.php">GRAB &nbsp;<i class="fa fa-search" aria-hidden="true"></i></a>
                             </li>
+                            <hr id="hrs">
                             <li class="nav-item">
                                 <a class="nav-button nav-link nav-a" href="">
                                     <i class="fa fa-user-circle-o" aria-hidden="true"></i>
@@ -163,7 +168,7 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
 
             <!-- Section c begins -->
             <div class="heading-transactions">
-                <h2>PAST RIDES</h2>
+                <h2 class="fancy1">PAST RIDES</h2>
                 <hr align="left" />
             </div>
             <section class="section-b container-fluid">
@@ -293,6 +298,15 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
 
         <script src="JS/jquery.js">
         </script>
+        <script>
+            var loader = document.getElementById("loader");
+            window.addEventListener('load', function() {
+                // setTimeout(function() {
+                loader.style.display = 'none';
+                // }, 3000);
+            });
+        </script>
+
 
         <script src="JS/form_validation.js"></script>
 
@@ -309,7 +323,7 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
             }
 
             let char = 0;
-            let timer = setInterval(onTick, 100);
+            let timer = setInterval(onTick, 300);
 
             function onTick() {
                 // console.log(text);
@@ -319,15 +333,48 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
                 char++;
 
                 if (char === splitText.length) {
-                    complete();
-                    return;
+                    $(".fancy span").removeClass("fades");
+                    // clearInterval(timer);
+                    // timer = null;
+                    char = 0;
+
+                    // timer = setInterval(onTick, 100);
+
                 }
             }
+        </script>
 
-            function complete() {
-                $(".fancy span").removeClass("fades");
-                clearInterval(timer);
-                timer = null;
+        <script>
+            const text1 = document.querySelector(".fancy1");
+            const stringText1 = text1.textContent;
+            // console.log(stringText);
+            const splitText1 = stringText1.split("");
+            // console.log(splitText);
+            text1.textContent = "";
+
+            for (let j = 0; j < splitText1.length; j++) {
+                text1.innerHTML += "<span>" + splitText1[j] + "</span>";
+            }
+
+            let char1 = 0;
+            let timer1 = setInterval(onTick1, 300);
+
+            function onTick1() {
+                // console.log(text);
+                const span1 = text1.querySelectorAll('span')[char1];
+                // console.log(span);
+                span1.className += "fades1";
+                char1++;
+
+                if (char1 === splitText1.length) {
+                    $(".fancy1 span").removeClass("fades1");
+                    // clearInterval(timer);
+                    // timer = null;
+                    char1 = 0;
+
+                    // timer = setInterval(onTick, 100);
+
+                }
             }
         </script>
 
@@ -451,5 +498,5 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
 
 } else {
     // print_r(isset($_SESSSION['user']));
-    header('loacation: index.php');
+    header('location: index.php');
 }

@@ -49,8 +49,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $query = "SELECT * FROM share;";
     $query = "INSERT INTO `share`(`username`, `source`,`destination`,  `date`, `time`, `acceptor_username`,`active`,`image_dir`) VALUES ('$user','$source','$destination','$date','$time', 'acceptor',1,'$file');";
-    echo ($query);
-    print_r($query);
+    // print_r($query);
+    // echo ($query);
     mysqli_query($db, $query);
 
 
