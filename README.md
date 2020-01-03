@@ -44,9 +44,9 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-This is an awesome project on Carpooling website which, I build form scratch. It uses Bootstrap 4 as Front-End web UI framework and PHP 5 for backend development. <br/>
-It is a comletely responsive website build incorporating mobile-first approach.<br/>
-MySQLIi database has been used to store data including user's basic inforamtion and their past journeys and to track their active journeys.<br/>
+This is an awesome project on Carpooling website which, I build form scratch. It uses Bootstrap 4 as Front-End web UI framework and PHP 5 for backend. <br/>
+It is a completely responsive website build incorporating mobile-first approach.<br/>
+MySQLIi database has been used to store data including user's basic information, their past journeys and to track their active journeys.<br/>
 This project uses vanilla javascript, jquery and ajax for client-side programming.<br/>
 For scroll animations scrollreveal has been used.<br/>
 Mapbox has been used to link maps and generate paths.<br/>
