@@ -22,6 +22,9 @@ include('PHP/contact-form.php');
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.css" integrity="sha256-2bAj1LMT7CXUYUwuEnqqooPb1W0Sw0uKMsqNH0HwMa4=" crossorigin="anonymous" />
+
   <!-- CSS Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 
@@ -112,7 +115,7 @@ include('PHP/contact-form.php');
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close1">&times;</button>
 
 
-                  <form action="php/signup_validation.php" class="needs-validation" method="post" novalidate>
+                  <form action="php/signup_validation.php" class="needs-validation ajax-Second" method="post" novalidate>
                     <div class="row register-form">
                       <div class="col-md-6">
                         <div class="form-group input-group">
@@ -607,6 +610,7 @@ include('PHP/contact-form.php');
   <script src="JS/jquery.js"></script>
 
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js" integrity="sha256-2RS1U6UNZdLS0Bc9z2vsvV4yLIbJNKxyA4mrx5uossk=" crossorigin="anonymous"></script>
 
   <script>
     function Closer(s) {
@@ -615,6 +619,39 @@ include('PHP/contact-form.php');
       // console.log(r);
     }
   </script>
+
+
+  <script>
+    $(document).ready(function() {
+      $(".ajax-Second").submit(function(event) {
+        // event.preventDefault();
+
+        var iserror = document.querySelector('.form-control:invalid');
+
+        if (iserror == null) {
+          Closer('close1');
+          Swal.fire({
+            title: 'Please Wait',
+            width: 600,
+            padding: '3em',
+            backdrop: `rgba(41,95,138,0.4)`
+          });
+          Swal.showLoading();
+
+        } else {
+          return;
+        }
+        return;
+      });
+    });
+  </script>
+
+
+
+
+
+
+
 
   <script>
     $(document).ready(function() {
@@ -643,6 +680,9 @@ include('PHP/contact-form.php');
       });
     });
   </script>
+
+
+
 
   <script src="JS/car_binary.js">
   </script>

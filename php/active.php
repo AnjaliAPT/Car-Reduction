@@ -15,12 +15,13 @@ $user = $_SESSION['user'];
 
 
 
-$extract = "SELECT * FROM share WHERE (username='$user' OR acceptor_username='$user') AND active=1 ORDER BY share_id DESC;";
+$extract = "SELECT * FROM share WHERE (username='$user' OR acceptor_username='$user') ORDER BY share_id DESC;";
 // echo $extract;
 $res = mysqli_query($db, $extract);
 // echo $res;
 $found = 0;
 $res_check = mysqli_num_rows($res);
+// echo $res_check;
 if ($res_check > 0) {
     while ($row = mysqli_fetch_assoc($res)) {
         $curr_d = explode("/", date("m/d/Y"));
@@ -34,25 +35,27 @@ if ($res_check > 0) {
         if ($curr_d[2] > $d[2]) {
             $query = "UPDATE share SET active=0 WHERE share_id='" . $row["share_id"] . "';";
             mysqli_query($db, $query);
-            break;
+            continue;
         } else if (($curr_d[2] == $d[2]) && ($curr_d[0] > $d[0])) {
             $query = "UPDATE share SET active=0 WHERE share_id='" . $row["share_id"] . "';";
             mysqli_query($db, $query);
-            break;
+            continue;
         } else if (($curr_d[2] == $d[2]) && ($curr_d[0] == $d[0]) && ($curr_d[1] > $d[1])) {
             $query = "UPDATE share SET active=0 WHERE share_id='" . $row["share_id"] . "';";
             mysqli_query($db, $query);
-            break;
+            continue;
         } else if (($curr_d[2] == $d[2]) && ($curr_d[0] == $d[0]) && ($curr_d[1] == $d[1])  && ($curr_t[0] > $t[0])) {
             $query = "UPDATE share SET active=0 WHERE share_id='" . $row["share_id"] . "';";
             mysqli_query($db, $query);
-            break;
+            continue;
         } else if (($curr_d[2] == $d[2]) && ($curr_d[0] == $d[0]) && ($curr_d[1] == $d[1])  && ($curr_t[0] == $t[0])  &&  ($curr_t[1] > $t[1])) {
             $query = "UPDATE share SET active=0 WHERE share_id='" . $row["share_id"] . "';";
             mysqli_query($db, $query);
-            break;
-        } else
+            continue;
+        } else {
+            // echo $share_id;
             $found = 1;
+        }
 
         // echo $row["acceptor_username"] == $username;
         // die();

@@ -228,7 +228,7 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
                 }, 3000);
             });
         </script>
-    
+
 
 
 
@@ -342,8 +342,19 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
                         url: 'php/share_mail.php',
                         method: "post",
                         data: dat,
+                        beforeSend: function() {
+                            Swal.fire({
+                                title: 'Redirecting',
+                                text: 'Please wait',
+                                width: 600,
+                                padding: '3em',
+                                backdrop: `rgba(41,95,138,0.4)`
+                            });
+                            Swal.showLoading();
+                        },
                         success: function(res) {
                             // console.log(res);
+                            Swal.close();
                             dtp_input.value = "";
                             from.value = "";
                             to.value = "";

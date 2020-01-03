@@ -1,65 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Ferry | Sharing your journeys</title>
-	<link rel="icon" type="image/png" href="../Resources/images/Group4.png">
-
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.css" integrity="sha256-2bAj1LMT7CXUYUwuEnqqooPb1W0Sw0uKMsqNH0HwMa4=" crossorigin="anonymous" />
-
-	<style>
-		* {
-			-webkit-box-sizing: border-box;
-			box-sizing: border-box;
-		}
-
-		html,
-		body {
-			margin: 0;
-			padding: 0;
-			overflow-x: hidden;
-			width: 100%;
-		}
-
-		#loader {
-			background-color: purple;
-			position: absolute;
-			z-index: 10000;
-			width: 100%;
-			height: 100%;
-		}
-	</style>
-
-</head>
-
-<body>
-
-	<div id="loader">
-
-	</div>
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js" integrity="sha256-2RS1U6UNZdLS0Bc9z2vsvV4yLIbJNKxyA4mrx5uossk=" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-	<script>
-		var loader = document.getElementById("loader");
-		window.addEventListener('load', function() {
-			// setTimeout(function() {
-			loader.style.display = 'none';
-			// }, 3000);
-		});
-	</script>
-
-</body>
-
-</html>
-
-
 <?php
 ob_start();
+?>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.css" integrity="sha256-2bAj1LMT7CXUYUwuEnqqooPb1W0Sw0uKMsqNH0HwMa4=" crossorigin="anonymous" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js" integrity="sha256-2RS1U6UNZdLS0Bc9z2vsvV4yLIbJNKxyA4mrx5uossk=" crossorigin="anonymous"></script>
+
+<?php
+
+
 // print_r($_POST);
 
 // foreach ($_POST as $key => $value)
@@ -67,6 +16,7 @@ ob_start();
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
 
 	header('Cache-Control: no cache'); //no cache
 	session_cache_limiter('private_no_expire'); // works
@@ -85,45 +35,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$hash_pswd = md5($pswd);
 	$user = $f_name . $pswd;
 
-	$email_verify = "http://3e6462e8.ngrok.io//Car-Reduction/php/email_verify.php?email=$e&hash=$hsh";
-	$website = "http://3e6462e8.ngrok.io//Car-Reduction/index.php";
+	$email_verify = "http://5805b1d6.ngrok.io//Car-Reduction/php/email_verify.php?email=$e&hash=$hsh";
+	$website = "http://5805b1d6.ngrok.io/Car-Reduction/index.php";
 
 
 
 
-		// PHPMailer
+	// PHPMailer
 
-		require 'PHPMailerAutoload.php';
-		require 'credential.php';
+	require 'PHPMailerAutoload.php';
+	require 'credential.php';
 
-		$mail = new PHPMailer;
+	$mail = new PHPMailer;
 
-		// $mail->SMTPDebug = 4;                               // Enable verbose debug output
+	// $mail->SMTPDebug = 4;                               // Enable verbose debug output
 
-		$mail->isSMTP();                                      // Set mailer to use SMTP
-		$mail->Host = 'smtp.gmail.com;';  // Specify main and backup SMTP servers
-		$mail->SMTPAuth = true;                               // Enable SMTP authentication
-		$mail->Username = EMAIL;                 // SMTP username
-		$mail->Password = PASS;                           // SMTP password
-		$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-		$mail->Port = 587;                                    // TCP port to connect to
+	$mail->isSMTP();                                      // Set mailer to use SMTP
+	$mail->Host = 'smtp.gmail.com;';  // Specify main and backup SMTP servers
+	$mail->SMTPAuth = true;                               // Enable SMTP authentication
+	$mail->Username = EMAIL;                 // SMTP username
+	$mail->Password = PASS;                           // SMTP password
+	$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+	$mail->Port = 587;                                    // TCP port to connect to
 
-		$mail->setFrom(EMAIL, 'ferry');
-		$mail->addAddress($e, $f_name . " " . $l_name);     // Add a recipient
-		// $mail->addAddress('ellen@example.com');               // Name is optional
-		$mail->addReplyTo('ferry | <noreply@ferry.com>');
-		// $mail->addCC('cc@example.com');
-		// $mail->addBCC('bcc@example.com');
+	$mail->setFrom(EMAIL, 'ferry');
+	$mail->addAddress($e, $f_name . " " . $l_name);     // Add a recipient
+	// $mail->addAddress('ellen@example.com');               // Name is optional
+	$mail->addReplyTo('ferry | <noreply@ferry.com>');
+	// $mail->addCC('cc@example.com');
+	// $mail->addBCC('bcc@example.com');
 
-		// $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-		// $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
-		$mail->isHTML(true);                                  // Set email format to HTML
+	// $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+	// $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+	$mail->isHTML(true);                                  // Set email format to HTML
 
-		$mail->Subject = 'Confirm your Email';
+	$mail->Subject = 'Confirm your Email';
 
 
 
-		$mail->Body    = '
+	$mail->Body    = '
 
 
 
@@ -277,10 +227,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	</tr>
 	</tbody>
 	</table>
-	<div align="center" class="img-container center fixedwidth mobile_hide" style="padding-right: 0px;padding-left: 0px;">
-	<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px"><td style="padding-right: 0px;padding-left: 0px;" align="center"><![endif]--><a href="' . $website . '" style="outline:none" tabindex="-1" target="_blank"> <img align="center" alt="Image" border="0" class="center fixedwidth" src="http://drive.google.com/uc?export=view&id=1vwwLIvwIiepwIovCvJeeH1Vkd7suX8YAg" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: none; width: 100%; max-width: 121px; display: block;" title="Image" width="121"/></a>
-	<!--[if mso]></td></tr></table><![endif]-->
-	</div>
 	<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 20px; padding-bottom: 10px; font-family: Georgia, \'Times New Roman\', serif"><![endif]-->
 	<div style="color:#FFFFFF;font-family:\'Bitter\', Georgia, Times, \'Times New Roman\', serif;line-height:1.2;padding-top:20px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
 	<div style="font-size: 12px; line-height: 1.2; font-family: \'Bitter\', Georgia, Times, \'Times New Roman\', serif; color: #FFFFFF; mso-line-height-alt: 14px;">
@@ -487,27 +433,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-		if (!$mail->send()) {
-			echo "<script>";
-			echo "window.location = '../error.php';"; // redirect with javascript, after page loads
-			echo "</script>";
-			exit();
-			// echo 'Message could not be sent.';
-			// echo 'Mailer Error: ' . $mail->ErrorInfo;
-		} else {
-			echo "<script>";
-			// echo "alert('An email has been sent to you. Confirm your email to login');";
-			echo "alert('Thanks for signing up. Please check your email for confirmation!');";
-			echo "window.location.href = '../index.php';";
-			echo "</script>";
-			exit();
-		}
 
 
 
 
 
-		//PHPMailer
+	//PHPMailer
 
 
 	// https://myaccount.google.com/u/0/lesssecureapps?pli=1
@@ -528,7 +459,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$query = "INSERT INTO `user`(`first_name`, `last_name`,`email`, `mobile`, `gender`, `password`, `car_binary`, `email_binary`, `username`, `hash`) VALUES ('$f_name','$l_name','$e', '$mob', '$gend','$pswd',$car_bin,0,'$user','$hsh');";
 	mysqli_query($db, $query);
 
-	header('location: ../index.php');
+	if (!$mail->send()) {
+
+?>
+
+		<script>
+			$(document).ready(function() {
+				Swal.fire({
+					title: "SIGNUP",
+					text: "Error while signing up",
+					type: "error"
+				}).then(function() {
+					window.location = "../index.php";
+				});
+			});
+		</script>
+	<?php
+
+	} else {
+
+	?>
+		<script>
+			$(document).ready(function() {
+				Swal.fire({
+					title: "SIGNUP",
+					text: "Thanks for signing up. Please check your email for confirmation!",
+					type: "success"
+				}).then(function() {
+					window.location = "../index.php";
+				});
+			});
+		</script>
+<?php
+
+	}
+
 	exit();
 
 	ob_end_clean();

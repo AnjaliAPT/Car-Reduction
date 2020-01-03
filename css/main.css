@@ -13,7 +13,8 @@ body {
   font-size: 1rem;
   font-weight: normal;
   line-height: 1.5;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
+  overflow-y: scroll;
   width: 100%;
   /* height: 100%; */
 }
@@ -880,6 +881,9 @@ span.fades1 {
   /* display: none; */
 }
 
+main {
+  margin-top: 200px !important;
+}
 
 @media screen and (max-width: 1200px) {
   #a2 img {
@@ -987,12 +991,6 @@ span.fades1 {
   }
 }
 
-
-@media screen and (max-width: 979px) {
-  body {
-    margin-top: 200px;
-  }
-}
 
 /* @media screen and (max-width: 900px) {
   .upper-column {

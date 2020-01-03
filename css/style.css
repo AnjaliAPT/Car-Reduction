@@ -13,6 +13,7 @@ body {
   font-weight: normal;
   line-height: 1.5;
   overflow-x: hidden !important;
+  overflow-y: scroll;
   width: 100%;
   --nav-Color: transparent;
   --main-Color: linear-gradient(to right, #5e92db, #39b2a7);

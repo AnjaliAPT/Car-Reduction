@@ -13,11 +13,12 @@ $user = $_SESSION['user'];
 $extract = "SELECT * FROM share WHERE (username='$user' OR acceptor_username='$user') AND active=0 ORDER BY share_id DESC;";
 
 $res = mysqli_query($db, $extract);
-
+$found = 0;
 $res_check = mysqli_num_rows($res);
 if ($res_check > 0) {
     while ($row = mysqli_fetch_assoc($res)) {
 
+   
 
         if (substr_count($row["source"], ",") > 2) {
             $temp = explode(",", $row["source"]);
@@ -82,8 +83,8 @@ if ($res_check > 0) {
 
     <?php
     }
-} else {
-
+}
+else {
     ?>
     <div class="notfound">
         <h2>No Rides Found</h2>

@@ -12,7 +12,7 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && isset($_POST['change'])) {
 
 	$change = $_POST['change'];
 
-	$query = "UPDATE share SET active=0 WHERE share_id=$change;";
+	$query = "UPDATE share SET active=2 WHERE share_id=$change;";
 	print_r($query);
 	mysqli_query($db, $query);
 
@@ -22,13 +22,16 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && isset($_POST['change'])) {
 	$user = $_SESSION['user'];
 	$e = $_SESSION['email'];
 	$fname = $_SESSION["fname"];
-	$website = "http://ed49cfcc.ngrok.io/Car-Reduction/index.php";
+	$website = "http://5805b1d6.ngrok.io/Car-Reduction/index.php";
 
 	$query = "SELECT * FROM share WHERE share_id=$change;";
-	echo $query;
+	// echo $query;
 	$res = mysqli_query($db, $query);
 	$row = mysqli_fetch_assoc($res);
-
+	if ($row > 0) {
+		$query = "UPDATE share SET acceptor_username='$user' WHERE share_id=$change;";
+		mysqli_query($db, $query);
+	}
 	$source = $row['source'];
 	$destination = $row['destination'];
 	$date = $row['date'];
@@ -221,10 +224,6 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && isset($_POST['change'])) {
 </tr>
 </tbody>
 </table>
-<div align="center" class="img-container center fixedwidth mobile_hide" style="padding-right: 0px;padding-left: 0px;">
-<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px"><td style="padding-right: 0px;padding-left: 0px;" align="center"><![endif]--><a href="' . $website . '" style="outline:none" tabindex="-1" target="_blank"> <img align="center" alt="Image" border="0" class="center fixedwidth" src="http://drive.google.com/uc?export=view&id=1vwwLIvwIiepwIovCvJeeH1Vkd7suX8YAg" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: none; width: 100%; max-width: 121px; display: block;" title="Image" width="121"/></a>
-<!--[if mso]></td></tr></table><![endif]-->
-</div>
 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 20px; padding-bottom: 10px; font-family: Georgia, \'Times New Roman\', serif"><![endif]-->
 <div style="color:#FFFFFF;font-family:\'Bitter\', Georgia, Times, \'Times New Roman\', serif;line-height:1.2;padding-top:20px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
 <div style="font-size: 12px; line-height: 1.2; font-family: \'Bitter\', Georgia, Times, \'Times New Roman\', serif; color: #FFFFFF; mso-line-height-alt: 14px;">
@@ -448,4 +447,4 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && isset($_POST['change'])) {
 	ob_end_clean();
 	die();
 	// session_destroy();
-} 
+}

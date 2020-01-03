@@ -32,29 +32,24 @@ if (isset($_GET['email']) && !empty($_GET['email']) and isset($_GET['hash']) && 
 
 ?>
             <script>
-                // console.log('Alerted');
                 $(document).ready(function() {
                     Swal.fire({
-                        title: 'Congrats! Your account is activated.',
+                        title: 'Congrats! Your account is activated',
                         width: 600,
                         type: 'success',
                         padding: '3em',
                         backdrop: `rgba(41,95,138,0.4)`
-                    })
+                    }).then(function() {
+                        window.location = "../index.php";
+                    });
                 })
-
-                window.location.href = '../index.php'; // redirect with javascript, after page loads
             </script>
-
-
         <?php
-            exit();
         } else {
 
 
         ?>
             <script>
-                console.log('Alerted');
                 $(document).ready(function() {
                     Swal.fire({
                         title: 'The url is invalid or your account is already active.',
@@ -77,7 +72,6 @@ if (isset($_GET['email']) && !empty($_GET['email']) and isset($_GET['hash']) && 
 
         ?>
         <script>
-            console.log('Alerted');
             $(document).ready(function() {
                 Swal.fire({
                     title: 'Invalid approach, please use the link that has been send to your email.',
@@ -100,7 +94,6 @@ if (isset($_GET['email']) && !empty($_GET['email']) and isset($_GET['hash']) && 
 
     ?>
     <script>
-        console.log('Alerted');
         $(document).ready(function() {
             Swal.fire({
                 title: 'Invalid approach, please use the link that has been send to your email.',

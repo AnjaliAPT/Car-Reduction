@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($name_error == "" and $email_error == "" and $subject_error == "" and $company_error == "" and $text_error == "") {
 
 
-        $website = "";
+        $website = "http://5805b1d6.ngrok.io/Car-Reduction/index.php";
 
 ?>
 
@@ -241,10 +241,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </tr>
 </tbody>
 </table>
-<div align="center" class="img-container center fixedwidth mobile_hide" style="padding-right: 0px;padding-left: 0px;">
-<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px"><td style="padding-right: 0px;padding-left: 0px;" align="center"><![endif]--><a href="' . $website . '" style="outline:none" tabindex="-1" target="_blank"> <img align="center" alt="Image" border="0" class="center fixedwidth" src="http://drive.google.com/uc?export=view&id=1vwwLIvwIiepwIovCvJeeH1Vkd7suX8YAg" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: none; width: 100%; max-width: 121px; display: block;" title="Image" width="121"/></a>
-<!--[if mso]></td></tr></table><![endif]-->
-</div>
+
 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 20px; padding-bottom: 10px; font-family: Georgia, \'Times New Roman\', serif"><![endif]-->
 <div style="color:#FFFFFF;font-family:\'Bitter\', Georgia, Times, \'Times New Roman\', serif;line-height:1.2;padding-top:20px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
 <div style="font-size: 12px; line-height: 1.2; font-family: \'Bitter\', Georgia, Times, \'Times New Roman\', serif; color: #FFFFFF; mso-line-height-alt: 14px;">
@@ -450,38 +447,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $nme = $eml = $cmp = $sbj = $msg = "";
 
         if (!$mail->send()) {
-        ?>
-            <script>
-                $(document).ready(function() {
-                    Swal.fire({
-                        type: 'error',
-                        title: 'Oops...',
-                        padding: '3em',
-                        text: 'Something went wrong!<br/>Your message could not be delivered.',
-                    }, function() {
-                        window.location.href = "index.php";
-                    });
-                });
-            </script>
-        <?php
 
+            header('location: ' . $_SERVER['PHP_SELF']);
+            die;
         } else {
-        ?>
-            <script>
-                $(document).ready(function() {
-                    // console.log('here');
-                    Swal.fire({
-                        title: 'Your message has been delivered.',
-                        width: 600,
-                        type: 'success',
-                        padding: '3em'
-                    }, function() {
-                        window.location.href = "index.php";
-                    });
-                });
-            </script>
-<?php
-            header('location: index.php');
+            echo "<script>";
+            echo "alert('Message has been sent')";
+            echo "</script>";
+            header('location: ' . $_SERVER['PHP_SELF']);
+            die;
         }
 
 
@@ -494,6 +468,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // session_start();
         // include('connect.php');
 
+    } else {
+        ?>
+
+        <script>
+            window.location.href = "index.php#no-margin";
+        </script>
+
+<?php
     }
     // session_destroy();
     // );exit(

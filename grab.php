@@ -258,8 +258,18 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
                             url: 'php/grab_mail.php',
                             method: "post",
                             data: dat,
+                            beforeSend: function() {
+                                Swal.fire({
+                                    title: 'Please Wait',
+                                    width: 600,
+                                    padding: '3em',
+                                    backdrop: `rgba(41,95,138,0.4)`
+                                });
+                                Swal.showLoading();
+                            },
                             success: function(res) {
                                 // console.log(res);
+                                Swal.close();
                                 Swal.fire({
                                     title: 'Your ride is confirmed',
                                     width: 600,
