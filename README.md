@@ -104,7 +104,7 @@ Project Link : [https://github.com/AKASHCS50/Car-Reduction](https://github.com/A
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
-The project could not have been completed without the follwing applications 😎:
+This project could not have been completed without the following applications 😎:
 
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [MAMP](https://www.mamp.info/en/)
