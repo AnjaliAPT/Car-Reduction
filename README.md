@@ -34,7 +34,7 @@
 ## Table of Contents
 
 * [About the Project](#about-the-project)
-  * [Built With](#built-with)
+* [Built With](#built-with)
 * [Contributing](#contributing)
 * [License](#license)
 * [Contact](#contact)
@@ -53,7 +53,7 @@ Mapbox has been used to link maps and generate paths.<br/>
 PHPMailer has been used to send mails when user signups, or accepts or shares a pool.<br/> 
 
 
-### Built With
+## Built With
 Following technologies are used in the project.
 * HTML 5
 * CSS 3
@@ -81,7 +81,7 @@ Contributions are what make the open source community such an amazing place to b
 
 In case you found a bug 🐛
 
-Open an issue (`https://github.com/othneildrew/AKASHCS50/Car-Reduction/issues`)<br/>
+Open an issue (`https://github.com/AKASHCS50/Car-Reduction/issues`)<br/>
 Or
  [Contact me](#contact)
 
@@ -108,9 +108,12 @@ The project could not have been completed without the follwing applications 😎
 
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [MAMP](https://www.mamp.info/en/)
+* [Sweetalert2](https://sweetalert2.github.io/)
+* [Html2Canvas](https://github.com/niklasvh/html2canvas)
 * [Font Awesome](https://fontawesome.com)
 * [Undraw](https://undraw.co/)
 * [PHPMailer](https://github.com/PHPMailer/PHPMailer)
+* [Figma](https://www.figma.com/ui-design-tool/)
 
 🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉
 
