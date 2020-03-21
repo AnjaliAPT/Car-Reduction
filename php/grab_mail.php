@@ -22,7 +22,7 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && isset($_POST['change'])) {
 	$user = $_SESSION['user'];
 	$e = $_SESSION['email'];
 	$fname = $_SESSION["fname"];
-	$website = "http://5805b1d6.ngrok.io/Car-Reduction/index.php";
+	$website = "https://ferry-carpool.herokuapp.com/";
 
 	$query = "SELECT * FROM share WHERE share_id=$change;";
 	// echo $query;
