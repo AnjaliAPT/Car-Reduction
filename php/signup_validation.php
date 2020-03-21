@@ -35,8 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$hash_pswd = md5($pswd);
 	$user = $f_name . $pswd;
 
-	$email_verify = "http://5805b1d6.ngrok.io//Car-Reduction/php/email_verify.php?email=$e&hash=$hsh";
-	$website = "http://5805b1d6.ngrok.io/Car-Reduction/index.php";
+	$email_verify = "https://ferry-carpool.herokuapp.com/php/email_verify.php?email=$e&hash=$hsh";
+	$website = "https://ferry-carpool.herokuapp.com/";
 
 
 
