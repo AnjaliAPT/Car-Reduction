@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($name_error == "" and $email_error == "" and $subject_error == "" and $company_error == "" and $text_error == "") {
 
 
-        $website = "http://5805b1d6.ngrok.io/Car-Reduction/index.php";
+        $website = "https://ferry-carpool.herokuapp.com/";
 
 ?>
 
