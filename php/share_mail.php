@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fname = $_SESSION['fname'];
 	$e = $_SESSION['email'];
 	
-    $website = "http://5805b1d6.ngrok.io/Car-Reduction/index.php";
+    $website = "https://ferry-carpool.herokuapp.com/";
 
     $source = mysqli_real_escape_string($db, $_POST["from"]);
     $destination = mysqli_real_escape_string($db, $_POST["to"]);
