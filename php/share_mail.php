@@ -7,90 +7,91 @@ ob_start();
 // if (isset($_POST["from"])) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    header('Cache-Control: no cache'); //no cache
-    session_cache_limiter('private_no_expire'); // works
-    //session_cache_limiter('public'); // works too
-    include('connect.php');
-    include('credential.php');
+	header('Cache-Control: no cache'); //no cache
+	session_cache_limiter('private_no_expire'); // works
+	//session_cache_limiter('public'); // works too
+	include('connect.php');
+	include('credential.php');
 
-    session_start();
+	session_start();
 
 
-    $user = $_SESSION['user'];
-    $fname = $_SESSION['fname'];
+	$user = $_SESSION['user'];
+	$fname = $_SESSION['fname'];
 	$e = $_SESSION['email'];
-	
-    $website = "https://ferry-carpool.herokuapp.com/";
 
-    $source = mysqli_real_escape_string($db, $_POST["from"]);
-    $destination = mysqli_real_escape_string($db, $_POST["to"]);
-    $date = mysqli_real_escape_string($db, $_POST["date"]);
-    $time = mysqli_real_escape_string($db, $_POST["time"]);;
+	$website = "https://ferry-carpool.herokuapp.com/";
+	// $website = "http://47abf639.ngrok.io/Car-Reduction/index.php";
 
-    $image = $_POST['image'];
+	$source = mysqli_real_escape_string($db, $_POST["from"]);
+	$destination = mysqli_real_escape_string($db, $_POST["to"]);
+	$date = mysqli_real_escape_string($db, $_POST["date"]);
+	$time = mysqli_real_escape_string($db, $_POST["time"]);;
 
-    $location = "../Resources/local/";
+	$image = $_POST['image'];
 
-    $image_parts = explode(";base64,", $image);
+	$location = "../Resources/local/";
 
-    $image_base64 = base64_decode($image_parts[1]);
+	$image_parts = explode(";base64,", $image);
 
-    $filename = "screenshot_" . uniqid() . '.png';
+	$image_base64 = base64_decode($image_parts[1]);
 
-    $file = $location . $filename;
+	$filename = "screenshot_" . uniqid() . '.png';
 
-    file_put_contents($file, $image_base64);
+	$file = $location . $filename;
 
-    $location = "Resources/local/";
+	file_put_contents($file, $image_base64);
 
-    $file = $location . $filename;
+	$location = "Resources/local/";
 
-
-
-    $query = "SELECT * FROM share;";
-    $query = "INSERT INTO `share`(`username`, `source`,`destination`,  `date`, `time`, `acceptor_username`,`active`,`image_dir`) VALUES ('$user','$source','$destination','$date','$time', 'acceptor',1,'$file');";
-    // print_r($query);
-    // echo ($query);
-    mysqli_query($db, $query);
+	$file = $location . $filename;
 
 
 
+	$query = "SELECT * FROM share;";
+	$query = "INSERT INTO `share`(`username`, `source`,`destination`,  `date`, `time`, `acceptor_username`,`active`,`image_dir`) VALUES ('$user','$source','$destination','$date','$time', 'acceptor',1,'$file');";
+	// print_r($query);
+	// echo ($query);
+	mysqli_query($db, $query);
 
 
 
-    // PHPMailer
-
-    require 'PHPMailerAutoload.php';
-    require 'credential.php';
-
-    $mail = new PHPMailer;
-
-    // $mail->SMTPDebug = 4;                               // Enable verbose debug output
-
-    $mail->isSMTP();                                      // Set mailer to use SMTP
-    $mail->Host = 'smtp.gmail.com;';  // Specify main and backup SMTP servers
-    $mail->SMTPAuth = true;                               // Enable SMTP authentication
-    $mail->Username = EMAIL;                 // SMTP username
-    $mail->Password = PASS;                           // SMTP password
-    $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-    $mail->Port = 587;                                    // TCP port to connect to
-
-    $mail->setFrom(EMAIL, 'ferry');
-    $mail->addAddress($e, $fname);     // Add a recipient
-    // $mail->addAddress('ellen@example.com');               // Name is optional
-    $mail->addReplyTo('ferry | <noreply@ferry.com>');
-    // $mail->addCC('cc@example.com');
-    // $mail->addBCC('bcc@example.com');
-
-    // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-    // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
-    $mail->isHTML(true);                                  // Set email format to HTML
-
-    $mail->Subject = 'Offered a ride';
 
 
 
-    $mail->Body    = '
+	// PHPMailer
+
+	require 'PHPMailerAutoload.php';
+	require 'credential.php';
+
+	$mail = new PHPMailer;
+
+	// $mail->SMTPDebug = 4;                               // Enable verbose debug output
+
+	$mail->isSMTP();                                      // Set mailer to use SMTP
+	$mail->Host = 'smtp.gmail.com;';  // Specify main and backup SMTP servers
+	$mail->SMTPAuth = true;                               // Enable SMTP authentication
+	$mail->Username = EMAIL;                 // SMTP username
+	$mail->Password = PASS;                           // SMTP password
+	$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+	$mail->Port = 587;                                    // TCP port to connect to
+
+	$mail->setFrom(EMAIL, 'ferry');
+	$mail->addAddress($e, $fname);     // Add a recipient
+	// $mail->addAddress('ellen@example.com');               // Name is optional
+	$mail->addReplyTo('ferry | <noreply@ferry.com>');
+	// $mail->addCC('cc@example.com');
+	// $mail->addBCC('bcc@example.com');
+
+	// $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+	// $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+	$mail->isHTML(true);                                  // Set email format to HTML
+
+	$mail->Subject = 'Offered a ride';
+
+
+
+	$mail->Body    = '
     
     
     
@@ -450,28 +451,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-    if (!$mail->send()) {
-        echo "<script>";
-        echo "window.location = '../error.php';"; // redirect with javascript, after page loads
-        echo "</script>";
-        // echo 'Message could not be sent.';
-        // echo 'Mailer Error: ' . $mail->ErrorInfo;
-    }
+	if (!$mail->send()) {
+		echo "<script>";
+		echo "window.location = '../error.php';"; // redirect with javascript, after page loads
+		echo "</script>";
+		// echo 'Message could not be sent.';
+		// echo 'Mailer Error: ' . $mail->ErrorInfo;
+	}
 
 
 
 
 
-    //PHPMailer
+	//PHPMailer
 
 
 
 
-    ob_end_clean();
-    die();
-    // session_destroy();
-}
-
-else{
+	ob_end_clean();
+	die();
+	// session_destroy();
+} else {
 	header('location: ../error.php');
 }
